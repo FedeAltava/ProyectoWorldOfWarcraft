@@ -1,9 +1,13 @@
 <div class="lista-personajes">
-    <h2>Lista de Personajes de WoW</h2>
-    <ul>
-      <li *ngFor="let personaje of personajes">
-        {{ personaje.nombre }} - {{ personaje.clase }} ({{ personaje.especializacion }}) - Nivel {{ personaje.nivel }}
-      </li>
-    </ul>
+  <h2>Lista de Personajes</h2>
+  <ul>
+    <li *ngFor="let personaje of personajes">
+      <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
+    </li>
+  </ul>
+  <div *ngIf="personajes.length === 0" class="mensaje">
+    No hay personajes en la lista.
   </div>
+</div>
+
   

@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { PersonajeService } from '../personaje.service'; // Importar el servicio
 
 @Component({
-  selector: 'app-lista-personajes',
+  selector: 'app-lista-personaje',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './lista-personajes.component.html',
-  styleUrl: './lista-personajes.component.css'
+  styleUrls: ['./lista-personajes.component.css']
 })
-export class ListaPersonajesComponent {
+export class ListaPersonajeComponent implements OnInit {
+  personajes: { nombre: string, clase: string, nivel: number }[] = [];
 
+  constructor(private personajeService: PersonajeService) { }
+
+  ngOnInit(): void {
+    this.personajes = this.personajeService.getPersonajes(); // Obtener personajes del servicio
+  }
 }
+
+
