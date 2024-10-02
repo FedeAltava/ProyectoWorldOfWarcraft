@@ -1,8 +1,9 @@
 <div class="lista-personajes">
   <h2>Lista de Personajes</h2>
   <ul>
-    <li *ngFor="let personaje of personajes">
+    <li *ngFor="let personaje of personajes; let i = index">
       <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
+      <button (click)="borrarPersonaje(i)">Eliminar</button>
     </li>
   </ul>
   <div *ngIf="personajes.length === 0" class="mensaje">

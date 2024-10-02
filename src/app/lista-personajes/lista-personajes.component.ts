@@ -13,10 +13,14 @@ export class ListaPersonajeComponent implements OnInit {
   personajes: { nombre: string, clase: string, nivel: number }[] = [];
 
   constructor(private personajeService: PersonajeService) { }
-
+  
   ngOnInit(): void {
     this.personajes = this.personajeService.getPersonajes(); // Obtener personajes del servicio
   }
+  borrarPersonaje(index: number){
+    this.personajeService.borrarPersonaje(index);
+  }
+  
 }
 
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PersonajeService } from '../personaje.service'; // Importar el servicio
+import { PersonajeService } from '../personaje.service'; 
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -19,12 +19,10 @@ export class AgregarPersonajeComponent {
 
   constructor(private personajeService: PersonajeService) { }
 
-  onSubmit() {
-    if (this.nombre && this.clase && this.nivel !== null) {
-      const nuevoPersonaje = { nombre: this.nombre, clase: this.clase, nivel: this.nivel };
-      this.personajeService.agregarPersonaje(nuevoPersonaje); // Usar el servicio para agregar el personaje
-      console.log('Personaje agregado:', nuevoPersonaje);
-    }
+  agregarPersonaje(nombre: string, clase: string, nivel: string){
+    console.log("hola mundo");
+    var nivel_number:number = Number(nivel);
+    this.personajeService.agregarPersonaje({nombre, clase, nivel: nivel_number});
   }
 }
 
