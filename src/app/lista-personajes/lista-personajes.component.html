@@ -3,6 +3,7 @@
   <ul>
     <li *ngFor="let personaje of personajes; let i = index">
       <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
+      <button id="detail-button" (click)="viewDigimon(personaje.id)">Detalles</button>
       <button (click)="borrarPersonaje(i)">Eliminar</button>
     </li>
   </ul>

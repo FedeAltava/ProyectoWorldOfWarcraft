@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PersonajeService } from '../personaje.service'; // Importar el servicio
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-lista-personaje',
   standalone: true,
@@ -9,16 +9,22 @@ import { PersonajeService } from '../personaje.service'; // Importar el servicio
   templateUrl: './lista-personajes.component.html',
   styleUrls: ['./lista-personajes.component.css']
 })
-export class ListaPersonajeComponent implements OnInit {
-  personajes: { nombre: string, clase: string, nivel: number }[] = [];
 
-  constructor(private personajeService: PersonajeService) { }
+export class ListaPersonajeComponent implements OnInit {
   
+  personajes: { id: number,nombre: string, clase: string, nivel: number }[] = [];
+
+  
+  constructor(private personajeService: PersonajeService, private router: Router) { }
+
   ngOnInit(): void {
     this.personajes = this.personajeService.getPersonajes(); // Obtener personajes del servicio
   }
   borrarPersonaje(index: number){
     this.personajeService.borrarPersonaje(index);
+  }
+  viewDigimon(id: number){
+    this.router.navigate(['/personaje', id]);
   }
   
 }

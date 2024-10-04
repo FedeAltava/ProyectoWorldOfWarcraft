@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root' // Hace que el servicio esté disponible en toda la aplicación
 })
 export class PersonajeService {
-  private personajes: { nombre: string, clase: string, nivel: number }[] = [
+  private personajes: { id: number,nombre: string, clase: string, nivel: number }[] = [
    
   ];
   private storageKey = 'personajes';
@@ -18,6 +18,9 @@ export class PersonajeService {
             }
           }
   }
+  getItemById(id: number): any {
+    return this.personajes.find(personajes => personajes.id === id);
+  }
 
   // Obtener la lista completa de personajes
   getPersonajes() {
@@ -25,8 +28,15 @@ export class PersonajeService {
   }
 
   // Agregar un nuevo personaje
-  agregarPersonaje(personaje: { nombre: string, clase: string, nivel: number }) {
+  agregarPersonaje(nombre: string, clase: string, nivel: number ) {
+    const newId = this.personajes.length > 0 
+    ? Math.max(...this.personajes.map(personaje => personaje.id)) + 1 
+    : 1;
+
+    const personaje = {id: newId, nombre, clase, nivel};
+    
     this.personajes.push(personaje);
+
     // Guarda el vector actualizado en localStorage
     this.saveToLocalStorage();
   }
