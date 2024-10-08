@@ -2,8 +2,9 @@
     <h2>Agregar Personaje de WoW</h2>
     <form>
       <div>
-        <label for="nombre">Nombre:</label>
-        <input type="text" #nombre  name="nombre" required />
+        <div> <label for="nombre">Nombre:</label></div>
+        
+        <div><input type="text" #nombre  name="nombre" required /></div>
       </div>
       <div>
         <label for="clase">Clase:</label>
@@ -15,7 +16,15 @@
         <label for="nivel">Nivel:</label>
         <input type="number" #nivel  name="nivel" required />
       </div>
-      <button (click)="agregarPersonaje(nombre.value,clase.value,nivel.value)">Agregar</button>
+      <div>
+        <label for="descripcion">Descripcion:</label>
+        <input type="text" #descripcion name="descripcion" required />
+      </div>
+      <div>
+        <label for="rama">Rama:</label>
+        <input type="text"  #rama name="rama" required />
+      </div>
+      <button (click)="agregarPersonaje(nombre.value,clase.value,nivel.value,descripcion.value,rama.value)">Agregar</button>
     </form>
   </div>
   

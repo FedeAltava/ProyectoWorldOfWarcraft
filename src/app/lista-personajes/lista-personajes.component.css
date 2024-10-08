@@ -4,6 +4,7 @@
     border-radius: 8px;
     max-width: 600px;
     margin: 0 auto;
+    word-wrap: break-word;
   }
   
   h2 {
@@ -14,6 +15,7 @@
   ul {
     list-style-type: none;
     padding: 0;
+    
   }
   
   li {
@@ -23,6 +25,7 @@
     margin-bottom: 10px;
     border-radius: 4px;
     color: #00796b;
+   
   }
   
   strong {
@@ -35,4 +38,16 @@
     font-size: 16px;
     color: #006064;
   }
-  
+  #detail-button{
+    margin-right: 5px;;
+  }
+  #detail-button:hover{
+    background-color: #55750b;
+    color: #e0f7fa;
+    border-radius: 6px;
+  }
+  #elimin:hover{
+    background-color: #f01313;
+    color: #e0f7fa;
+    border-radius: 6px;
+  }

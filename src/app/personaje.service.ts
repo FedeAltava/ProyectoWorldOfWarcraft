@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root' // Hace que el servicio esté disponible en toda la aplicación
 })
 export class PersonajeService {
-  private personajes: { id: number,nombre: string, clase: string, nivel: number }[] = [
+  private personajes: { id: number,nombre: string, clase: string, nivel: number,descripcion:string,rama:string }[] = [
    
   ];
   private storageKey = 'personajes';
@@ -28,12 +28,12 @@ export class PersonajeService {
   }
 
   // Agregar un nuevo personaje
-  agregarPersonaje(nombre: string, clase: string, nivel: number ) {
+  agregarPersonaje(nombre: string, clase: string, nivel: number,descripcion:string,rama:string  ) {
     const newId = this.personajes.length > 0 
     ? Math.max(...this.personajes.map(personaje => personaje.id)) + 1 
     : 1;
 
-    const personaje = {id: newId, nombre, clase, nivel};
+    const personaje = {id: newId, nombre, clase, nivel, descripcion,rama};
     
     this.personajes.push(personaje);
 

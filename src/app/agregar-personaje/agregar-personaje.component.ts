@@ -13,16 +13,17 @@ export class AgregarPersonajeComponent {
   nombre: string = '';
   clase: string = '';
   nivel: number | null = null;
+  descripcion : string ='';
+  rama: string ='';
 
   clases = ["Guerrero","Mago","Pícaro","Cazador","Chamán","Hechicero","Druida","Caballero de la Muerte","Monje","Paladín","Brujo","Cazador de Demonios"];
   
 
   constructor(private personajeService: PersonajeService) { }
 
-  agregarPersonaje(nombre: string, clase: string, nivel: string){
-    console.log("hola mundo");
+  agregarPersonaje(nombre: string, clase: string, nivel: string, descripcion:string, rama:string){
     var nivel_number:number = Number(nivel);
-    this.personajeService.agregarPersonaje({nombre, clase, nivel: nivel_number});
+    this.personajeService.agregarPersonaje(nombre, clase, nivel_number, descripcion,rama);
   }
 }
 

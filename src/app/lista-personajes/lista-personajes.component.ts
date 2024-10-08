@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class ListaPersonajeComponent implements OnInit {
   
-  personajes: { id: number,nombre: string, clase: string, nivel: number }[] = [];
+  personajes: { id: number,nombre: string, clase: string, nivel: number,descripcion:string,rama:string }[] = [];
 
   
   constructor(private personajeService: PersonajeService, private router: Router) { }
@@ -23,7 +23,7 @@ export class ListaPersonajeComponent implements OnInit {
   borrarPersonaje(index: number){
     this.personajeService.borrarPersonaje(index);
   }
-  viewDigimon(id: number){
+  viewPersonaje(id: number){
     this.router.navigate(['/personaje', id]);
   }
   

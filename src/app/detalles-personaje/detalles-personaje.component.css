@@ -1,0 +1,17 @@
+#link{
+
+    color :rgb(224, 130, 23);
+    text-decoration: none;
+}
+h2{
+    color:rgb(230, 197, 11);
+}
+.personaje-detail-container{
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+    color:black;
+
+}
