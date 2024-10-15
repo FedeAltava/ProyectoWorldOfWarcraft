@@ -1,24 +1,7 @@
 <div class="container">
-  <header class="main-header">
-    <h1>Lista Campeones</h1>
-    <nav class="main-nav">
-      <ul>
-        <li>
-          <a routerLink="/list">Lista Personajes</a>
-        </li>
-        <li>
-          <a routerLink="/add">Agregar Personajes</a>
-        </li>
-      </ul>  
-    </nav>
-  </header>
-
-<main class="main-content">
-  <section class="personaje-section">
-    <router-outlet></router-outlet> <!-- Parte que muestra el contenido -->
-  </section>
-</main>
-<footer class="main-footer">
-  <p>World of WarCraft © 2024</p>
-</footer>
+  <app-header></app-header>
+  <app-main></app-main>
+  <footer class="main-footer">
+    <p>World of WarCraft © 2024</p>
+  </footer>
 </div>

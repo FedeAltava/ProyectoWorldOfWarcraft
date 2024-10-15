@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { PersonajeService } from '../personaje.service';
+
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute,RouterLink } from '@angular/router';
+import { PersonajeService } from '../../services/personaje.service';
 @Component({
   selector: 'app-detalles-personaje',
   standalone: true,
