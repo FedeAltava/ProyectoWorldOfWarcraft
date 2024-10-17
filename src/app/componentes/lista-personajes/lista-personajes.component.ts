@@ -26,7 +26,9 @@ export class ListaPersonajeComponent implements OnInit {
   viewPersonaje(id: number){
     this.router.navigate(['/personaje', id]);
   }
-  
+  viewEditPersonaje(id: number){
+    this.router.navigate(['/edit', id]);
+  }
 }
 
 

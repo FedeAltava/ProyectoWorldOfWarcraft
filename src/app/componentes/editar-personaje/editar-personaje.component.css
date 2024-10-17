@@ -1,0 +1,45 @@
+.editar-personaje {
+    background-color: #f0f0f0; /* Fondo gris claro */
+    padding: 20px; /* Espacio interno */
+    border-radius: 8px; /* Bordes redondeados */
+    max-width: 400px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado horizontal */
+}
+
+h2 {
+    text-align: center; /* Centrar el título */
+    color: #333; /* Color del texto */
+}
+
+form {
+    display: flex; /* Usar flexbox para organizar los elementos */
+    flex-direction: column; /* Colocar los elementos en columna */
+}
+
+label {
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+    font-weight: bold; /* Texto en negrita */
+    color: #333; /* Color del texto */
+}
+
+input, select {
+    margin-bottom: 15px; /* Espacio entre los inputs */
+    padding: 10px; /* Espacio interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris claro */
+}
+
+button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px; /* Espacio interno del botón */
+    font-size: 16px; /* Tamaño de fuente */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
