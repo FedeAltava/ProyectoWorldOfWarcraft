@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonajeService } from '../../services/personaje.service';
+import { PersonajeService } from '../../../services/personaje.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class EditarPersonajeComponent implements OnInit {
   
   personaje: { id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string } | undefined;
-  clases: string[] = ['Guerrero', 'Mago', 'Arquero']; // Lista de clases, puedes adaptarla
+  clases: string[] = ['Guerrero', 'Mago', 'Arquero','Cazador','Chamán','Hechicero','Druida','Caballero de la Muerte','Monje','Paladín','Brujo','Cazador de Demonios']; // Lista de clases, puedes adaptarla
 
   constructor(
     private personajeService: PersonajeService, 

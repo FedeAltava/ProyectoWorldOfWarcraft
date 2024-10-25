@@ -1,17 +1,18 @@
 #link{
 
-    color :rgb(224, 130, 23);
+    color :rgb(236, 206, 32);
     text-decoration: none;
 }
 h2{
-    color:rgb(230, 197, 11);
+    color:rgb(72, 52, 182);
 }
 .personaje-detail-container{
-    background-color: #f0f0f0;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.2);
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 2% auto;
     color:black;
 
 }

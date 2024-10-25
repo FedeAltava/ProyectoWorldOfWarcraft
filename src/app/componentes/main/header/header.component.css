@@ -1,9 +1,32 @@
 .main-header {
-    background-color: #4a4a4a; 
+    height: 10%;
+    display: flex;
+    background: rgb(19,110,223);
+    background: radial-gradient(circle, rgba(19,110,223,1) 0%, rgba(2,12,25,1) 65%, rgba(0,0,0,0.9934174353335085) 100%); 
     padding: 20px;
     text-align: center;
     border-bottom: 2px solid #6f6f6f; 
     color:rgb(230, 197, 11);
+  }
+
+  .alianza img{
+    height: 80%;
+  }
+  .alianza img:hover{
+    transform:rotate(360deg);
+    transition:1s ease;
+  }
+
+  .horda img:hover{
+    transform:rotate(360deg);
+    transition:1s ease;
+  }
+  .horda img{
+    height: 80%;
+  }
+  .titulo{
+    flex-grow:1;
+   
   }
   .main-header h1 {
     margin: 0;

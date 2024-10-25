@@ -2,16 +2,14 @@
 .container {
     font-family: 'Arial', sans-serif; 
     color: #f1f1f1; 
-    background-color: #2a2a2a; 
+    background-image: url("https://e0.pxfuel.com/wallpapers/913/161/desktop-wallpaper-warcraft-battle-for-azeroth-hell-wow-battle-for-azeroth.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin: 0;
     padding: 0;
     height: 100vh;
   }
-  
-  
-  
-  
-  
   .main-content {
     padding: 20px;
     text-align: center;
@@ -23,17 +21,6 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
   }
-  
- 
-  .main-footer {
-    background-color: #4a4a4a; 
-    color: #f1f1f1; 
-    text-align: center;
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color:rgb(230, 197, 11);
-  }
+
   
 

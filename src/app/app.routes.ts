@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { ListaPersonajeComponent } from './componentes/lista-personajes/lista-personajes.component';
-import { AgregarPersonajeComponent } from './componentes/agregar-personaje/agregar-personaje.component';
-import { DetallesPersonajeComponent } from './componentes/detalles-personaje/detalles-personaje.component';
-import { EditarPersonajeComponent } from './componentes/editar-personaje/editar-personaje.component';
+import { ListaPersonajeComponent } from './componentes/main/lista-personajes/lista-personajes.component';
+import { AgregarPersonajeComponent } from './componentes/main/agregar-personaje/agregar-personaje.component';
+import { DetallesPersonajeComponent } from './componentes/main/detalles-personaje/detalles-personaje.component';
+import { EditarPersonajeComponent } from './componentes/main/editar-personaje/editar-personaje.component';
 
 export const routes: Routes = [
     { path: 'list', component: ListaPersonajeComponent }, // Ruta para listar personajes

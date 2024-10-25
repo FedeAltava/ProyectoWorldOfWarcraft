@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonajeService } from '../../services/personaje.service';
+import { PersonajeService } from '../../../services/personaje.service';
 @Component({
   selector: 'app-lista-personaje',
   standalone: true,
