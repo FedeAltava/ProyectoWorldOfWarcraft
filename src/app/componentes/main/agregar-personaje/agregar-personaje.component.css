@@ -16,7 +16,10 @@ form {
   display: flex; 
   flex-direction: column; 
 }
-
+form div{
+  display: flex; 
+  justify-content: space-between;
+}
 label {
   margin-bottom: 5px; 
   font-weight: bold; 
@@ -32,13 +35,23 @@ input, select {
 }
 
 button {
-  background-color: #0099ff85; 
-  color: white; 
-  padding: 10px; 
-  font-size: 16px; 
-  border: none; 
-  border-radius: 4px; 
-  cursor: pointer; 
+  font-family: 'Georgia', serif; 
+  font-size: 16px;
+  color: #ffd700; 
+  padding: 2px 2px;
+  border: 2px solid #8B4513; 
+  border-radius: 8px;
+  background: linear-gradient(145deg, #8B0000, #FF4500); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+button:hover{
+  color: #ffffff; 
+  border-color: #ffd700; 
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+
 }
 
 button:hover {

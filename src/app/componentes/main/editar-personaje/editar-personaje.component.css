@@ -16,7 +16,12 @@ h2 {
 
 form {
     display: flex; 
-    flex-direction: column; 
+    flex-direction: column;
+   
+}
+form div{
+    display: flex; 
+    justify-content: space-between;
 }
 
 label {
@@ -34,19 +39,22 @@ input, select {
 }
 
 button {
-    background-color: #0099ff85; 
-    color: white; 
-    padding: 10px; 
-    font-size: 16px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
+    font-family: 'Georgia', serif; 
+    font-size: 16px;
+    color: #ffd700; 
+    padding: 12px 24px;
+    border: 2px solid #8B4513; 
+    border-radius: 8px;
+    background: linear-gradient(145deg, #8B0000, #FF4500); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   
   button:hover {
-    background-color: #0056b3; 
+    color: #ffffff; 
+    border-color: #ffd700; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
   }
 
-button:hover {
-    background-color: #0056b3; 
-}

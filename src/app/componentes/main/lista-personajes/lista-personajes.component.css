@@ -46,15 +46,58 @@
     color: #0b0c0c;
   }
   #detail-button{
-    margin-right: 5px;;
+    font-family: 'Georgia', serif; 
+    font-size: 16px;
+    color: #ffd700; 
+    padding: 2px 2px;
+    border: 2px solid #8B4513; 
+    border-radius: 8px;
+    background: linear-gradient(145deg, #8B0000, #FF4500); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   #detail-button:hover{
-    background-color: #55750b;
-    color: #e0f7fa;
-    border-radius: 6px;
+    color: #ffffff; 
+    border-color: #ffd700; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+  }
+  #elimin{
+    font-family: 'Georgia', serif; 
+    font-size: 16px;
+    color: #ffd700; 
+    padding: 2px 2px;
+    border: 2px solid #8B4513; 
+    border-radius: 8px;
+    background: linear-gradient(145deg, #8B0000, #FF4500); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   #elimin:hover{
-    background-color: #f01313;
-    color: #e0f7fa;
-    border-radius: 6px;
+    color: #ffffff; 
+    border-color: #ffd700; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+  }
+  #editar{
+    font-family: 'Georgia', serif; 
+    font-size: 16px;
+    color: #ffd700; 
+    padding: 2px 2px;
+    border: 2px solid #8B4513; 
+    border-radius: 8px;
+    background: linear-gradient(145deg, #8B0000, #FF4500); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+  }
+  #editar:hover{
+    color: #ffffff; 
+    border-color: #ffd700; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+
   }

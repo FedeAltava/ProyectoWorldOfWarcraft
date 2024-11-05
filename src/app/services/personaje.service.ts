@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root' // Hace que el servicio esté disponible en toda la aplicación
@@ -7,7 +8,7 @@ export class PersonajeService {
   private personajes: { id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string }[] = [];
   private storageKey = 'personajes';
 
-  constructor() {
+  constructor(private router: Router) {
     // Verifica si hay personajes guardados en el localStorage. Si los encuentra, los carga en la propiedad 'personajes'.
     if (this.isLocalStorageAvailable()) {
       const personajesGuardados = localStorage.getItem(this.storageKey);
@@ -37,6 +38,7 @@ export class PersonajeService {
 
     // Guarda el vector actualizado en localStorage
     this.saveToLocalStorage();
+    this.router.navigate(['/list']); 
   }
 
   // Borrar un personaje por su índice

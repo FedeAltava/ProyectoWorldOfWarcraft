@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonajeService } from '../../../services/personaje.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-personaje',
@@ -17,11 +18,12 @@ export class AgregarPersonajeComponent {
   rama: string = '';
 
   clases = ["Guerrero","Mago","Pícaro","Cazador","Chamán","Hechicero","Druida","Caballero de la Muerte","Monje","Paladín","Brujo","Cazador de Demonios"];
-  constructor(private personajeService: PersonajeService) { }
+  constructor(private personajeService: PersonajeService,private router: Router)  { }
 
   agregarPersonaje(nombre: string, clase: string, nivel: string, descripcion:string, rama:string){
     var nivel_number:number = Number(nivel);
     this.personajeService.agregarPersonaje(nombre, clase, nivel_number, descripcion,rama);
+    
   }
 }
 
