@@ -8,9 +8,18 @@
 }
 
 h2 {
-  text-align: center; 
-  color: #333; 
+  font-family: 'Georgia', serif; /* Tipografía elegante */
+  font-size: 1.5em; /* Tamaño de fuente */
+  color: #ffd700; /* Color dorado */
+  text-align: center;
+  text-shadow: 
+      2px 2px 5px rgba(0, 0, 0, 0.7),  /* Sombra oscura para profundidad */
+      0 0 10px rgba(0, 191, 255, 0.7), /* Sombra azul eléctrico */
+      0 0 20px rgba(0, 191, 255, 0.5); /* Efecto de brillo azul */
+  padding: 10px; /* Espaciado alrededor del texto */
+  margin: 20px 0; /* Margen superior e inferior */
 }
+
 
 form {
   display: flex; 
