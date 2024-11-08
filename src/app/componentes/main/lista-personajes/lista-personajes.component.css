@@ -6,6 +6,8 @@
     max-width: 600px;
     margin: 2% auto;
     word-wrap: break-word;
+    max-height: 600px; /* Ajusta esta altura según necesites */
+    overflow-y: auto;
   }
   
   h2 {

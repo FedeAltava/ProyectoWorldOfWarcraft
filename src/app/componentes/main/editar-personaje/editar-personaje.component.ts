@@ -3,6 +3,7 @@ import { PersonajeService } from '../../../services/personaje.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-personaje',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EditarPersonajeComponent implements OnInit {
   
-  personaje: { id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string } | undefined;
+  personaje: { id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string } ={id: -1, nombre: "string", clase: "string", nivel: 2, descripcion: "string", rama: "string" }
   clases: string[] = ['Guerrero', 'Mago', 'Arquero','Cazador','Chamán','Hechicero','Druida','Caballero de la Muerte','Monje','Paladín','Brujo','Cazador de Demonios']; // Lista de clases, puedes adaptarla
 
   constructor(
@@ -28,11 +29,11 @@ export class EditarPersonajeComponent implements OnInit {
   }
 
   editarPersonaje(nombre: string, clase: string, nivel: string, descripcion: string, rama: string) {
-    if (this.personaje) { // Verificamos que el personaje esté definido
+    const id = this.personaje.id;
       const nivel_number = Number(nivel); // Convierte el string a número
-      this.personajeService.editarPersonaje(this.personaje.id, nombre, clase, nivel_number, descripcion, rama); // Pasamos el id
+      this.personajeService.editarPersonaje(id, nombre, clase, nivel_number, descripcion, rama); // Pasamos el id
       this.router.navigate(['/list']); // Redirige a la lista de personajes después de editar
-    }
+    
   }
 }
 

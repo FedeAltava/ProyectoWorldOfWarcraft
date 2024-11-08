@@ -54,12 +54,18 @@ export class PersonajeService {
 editarPersonaje(id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string) {
   const personajeIndex = id-1; // Busca el índice del personaje a editar
     // Actualiza el personaje
-    this.personajes[personajeIndex].nombre = nombre;
-    this.personajes[personajeIndex].clase = clase;
-    this.personajes[personajeIndex].nivel = nivel;
-    this.personajes[personajeIndex].descripcion = descripcion;
-    this.personajes[personajeIndex].rama = rama;
-    this.saveToLocalStorage(); // Guarda los cambios en localStorage
+    const indice = this.personajes.findIndex(personaje => personaje.id === id);
+    if (indice !== -1) {
+      this.personajes[indice] = {
+        ...this.personajes[indice],
+        nombre,
+        clase,
+        nivel,
+        descripcion,
+        rama
+      };
+      this.saveToLocalStorage();
+    }
   
 }
 

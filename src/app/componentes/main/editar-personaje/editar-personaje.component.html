@@ -3,25 +3,25 @@
   <form>
     <div>
       <label for="nombre">Nombre:</label>
-      <input type="text" #nombre [value]="personaje?.nombre" required />
+      <input type="text" #nombre [value]="personaje.nombre" required />
     </div>
     <div>
       <label for="clase">Clase:</label>
-      <select #clase required>
+      <select #clase required >
         <option *ngFor="let clase of clases" [value]="clase">{{ clase }}</option>
       </select>
     </div>
     <div>
       <label for="nivel">Nivel:</label>
-      <input type="number" #nivel [value]="personaje?.nivel" required />
+      <input type="number" #nivel [value]="personaje.nivel" required />
     </div>
     <div>
       <label for="descripcion">Descripción:</label>
-      <input type="text" #descripcion [value]="personaje?.descripcion" required />
+      <input type="text" #descripcion [value]="personaje.descripcion" required />
     </div>
     <div>
       <label for="rama">Rama:</label>
-      <input type="text" #rama [value]="personaje?.rama" required />
+      <input type="text" #rama [value]="personaje.rama" required />
     </div>
     <button type="submit" (click)="editarPersonaje(nombre.value,clase.value,nivel.value,descripcion.value,rama.value)">Editar</button>
   </form>
