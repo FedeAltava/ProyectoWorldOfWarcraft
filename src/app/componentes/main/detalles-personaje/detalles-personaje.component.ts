@@ -17,6 +17,6 @@ personaje:any;
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id')!; // Obtener el id de la URL
-    this.personaje = this.personajeService.getItemById(id); // Obtener el element
+    this.personaje = this.personajeService.getItemById(id); // Obtener el elemento
   }
 }
