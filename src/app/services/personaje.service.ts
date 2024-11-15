@@ -21,7 +21,7 @@ export class PersonajeService {
   getItemById(id: number): any {
     return this.personajes.find(personaje => personaje.id === id);
   }
-
+  
   // Obtener la lista completa de personajes
   getPersonajes() {
     return this.personajes;
@@ -50,24 +50,24 @@ export class PersonajeService {
     }
   }
 
-  // Editar un personaje existente
+// Editar un personaje existente
 editarPersonaje(id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string) {
-  const personajeIndex = id-1; // Busca el índice del personaje a editar
-    // Actualiza el personaje
-    const indice = this.personajes.findIndex(personaje => personaje.id === id);
-    if (indice !== -1) {
-      this.personajes[indice] = {
-        ...this.personajes[indice],
-        nombre,
-        clase,
-        nivel,
-        descripcion,
-        rama
-      };
-      this.saveToLocalStorage();
-    }
-  
+  const indice = this.personajes.findIndex(personaje => personaje.id === id);
+  if (indice !== -1) {
+    // Actualiza el personaje con los nuevos valores
+    this.personajes[indice] = {
+      ...this.personajes[indice],
+      nombre,
+      clase,
+      nivel,
+      descripcion,
+      rama
+    };
+    // Guarda el arreglo actualizado en localStorage
+    this.saveToLocalStorage();
+  }
 }
+
 
 
   // Método para guardar la lista de personajes en localStorage como un string JSON.

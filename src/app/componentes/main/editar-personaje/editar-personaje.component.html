@@ -7,8 +7,8 @@
     </div>
     <div>
       <label for="clase">Clase:</label>
-      <select #clase required >
-        <option *ngFor="let clase of clases" [value]="clase">{{ clase }}</option>
+      <select #clase  name="clase" required (change)="actualizarRamas(clase.value)">
+        <option *ngFor="let clase of clases" value="{{clase.nombre}}">{{clase.nombre}}</option>
       </select>
     </div>
     <div>
@@ -21,7 +21,11 @@
     </div>
     <div>
       <label for="rama">Rama:</label>
-      <input type="text" #rama [value]="personaje.rama" required />
+      <select #rama name="rama" required>
+        <option *ngFor="let rama of ramasDisponibles" [value]="rama">
+          {{ rama }}
+        </option>
+      </select>
     </div>
     <button type="submit" (click)="editarPersonaje(nombre.value,clase.value,nivel.value,descripcion.value,rama.value)">Editar</button>
   </form>
