@@ -1,33 +1,33 @@
 <div class="agregar-personaje">
     <h2>Agregar Personaje de WoW</h2>
-    <form>
+    <form [formGroup]="form" (submit)="send()">
       <div>
         <label for="nombre">Nombre:</label>
-        <input type="text" #nombre  name="nombre" required />
+        <input type="text" #nombre  name="nombre" formControlName="nombre"/>
       </div>
       <div>
         <label for="clase">Clase:</label>
-        <select #clase  name="clase" required (change)="actualizarRamas(clase.value)">
+        <select #clase  name="clase" required (change)="actualizarRamas(clase.value)" formControlName="clase">
           <option *ngFor="let clase of clases" value="{{clase.nombre}}">{{clase.nombre}}</option>
         </select>
       </div>
       <div>
         <label for="nivel">Nivel:</label>
-        <input type="number" #nivel  name="nivel" required />
+        <input type="number" #nivel  name="nivel" formControlName="nivel"/>
       </div>
       <div>
         <label for="descripcion">Descripcion:</label>
-        <input type="text" #descripcion name="descripcion" required />
+        <input type="text" #descripcion name="descripcion" formControlName="descripcion"/>
       </div>
       <div>
         <label for="rama">Rama:</label>
-        <select #rama name="rama" required>
+        <select #rama name="rama" formControlName="rama">
           <option *ngFor="let rama of ramasDisponibles" [value]="rama">
             {{ rama }}
           </option>
         </select>
       </div>
-      <button id="agregar"(click)="agregarPersonaje(nombre.value,clase.value,nivel.value,descripcion.value,rama.value)">Agregar</button>
+      <button id="agregar"(click)="agregarPersonaje(nombre.value,clase.value,nivel.value,descripcion.value,rama.value)"[disabled]="form.invalid">Agregar</button>
     </form>
   </div>
   

@@ -1,16 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonajeService } from '../../../services/personaje.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule,Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-agregar-personaje',
   standalone: true,
-  imports:[CommonModule],
+  imports:[CommonModule,ReactiveFormsModule,FormsModule],
   templateUrl: './agregar-personaje.component.html',
   styleUrls: ['./agregar-personaje.component.css']
 })
-export class AgregarPersonajeComponent {
+export class AgregarPersonajeComponent implements OnInit{
+  constructor(private personajeService: PersonajeService,private router: Router,private formBuilder:FormBuilder)  { }
+  public form! : FormGroup;
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      nombre:['',[
+        Validators.required
+      ]],
+      nivel:['',[
+        Validators.required
+      ]],
+      clase:['',[
+        Validators.required
+      ]],
+      descripcion:['',[
+        Validators.required
+      ]],
+      rama:['',[
+        Validators.required
+      ]]
+
+    });
+  }
+  send(): any {
+    console.log(this.form.value);
+  }
+
   nombre: string = '';
   clase: string = '';
   nivel: number | null = null;
@@ -31,7 +60,6 @@ export class AgregarPersonajeComponent {
     { nombre: "Brujo", ramas: ["Aflicción", "Demonología", "Destrucción"] },
     { nombre: "Cazador de Demonios", ramas: ["Devastación", "Venganza"] },
   ];
-  constructor(private personajeService: PersonajeService,private router: Router)  { }
 
   ramasDisponibles: string[] = [];
   
@@ -45,6 +73,8 @@ export class AgregarPersonajeComponent {
     this.personajeService.agregarPersonaje(nombre, clase, nivel_number, descripcion,rama);
     
   }
+
+
 }
 
 
