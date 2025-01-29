@@ -1,34 +1,41 @@
 <div class="editar-personaje">
-  <h2>Editar</h2>
-  <form>
+  <h2>Editar Personaje</h2>
+  <form [formGroup]="form" (ngSubmit)="editarPersonaje()">
+    <!-- Nombre -->
     <div>
       <label for="nombre">Nombre:</label>
-      <input type="text" #nombre [value]="personaje.nombre" required />
+      <input type="text" id="nombre" formControlName="nombre" required />
     </div>
+
+    <!-- Clase -->
     <div>
       <label for="clase">Clase:</label>
-      <select #clase  name="clase" required (change)="actualizarRamas(clase.value)">
-        <option *ngFor="let clase of clases" value="{{clase.nombre}}">{{clase.nombre}}</option>
+      <select id="clase" formControlName="clase" (change)="actualizarRamas(clases[0].nombre)" required>
+        <option *ngFor="let clase of clases" [value]="clase.nombre">{{ clase.nombre }}</option>
       </select>
     </div>
+
+    <!-- Nivel -->
     <div>
       <label for="nivel">Nivel:</label>
-      <input type="number" #nivel [value]="personaje.nivel" required />
+      <input type="number" id="nivel" formControlName="nivel" required />
     </div>
+
+    <!-- Descripción -->
     <div>
       <label for="descripcion">Descripción:</label>
-      <input type="text" #descripcion [value]="personaje.descripcion" required />
+      <input type="text" id="descripcion" formControlName="descripcion" required />
     </div>
+
+    <!-- Rama -->
     <div>
       <label for="rama">Rama:</label>
-      <select #rama name="rama" required>
-        <option *ngFor="let rama of ramasDisponibles" [value]="rama">
-          {{ rama }}
-        </option>
+      <select id="rama" formControlName="rama" required>
+        <option *ngFor="let rama of ramasDisponibles" [value]="rama">{{ rama }}</option>
       </select>
     </div>
-    <button type="submit" (click)="editarPersonaje(nombre.value,clase.value,nivel.value,descripcion.value,rama.value)">Editar</button>
+
+    <!-- Botón de envío -->
+    <button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
   </form>
 </div>
-
- 
