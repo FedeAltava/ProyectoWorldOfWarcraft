@@ -18,7 +18,7 @@ export class ListaPersonajeComponent implements OnInit {
   constructor(private characterService: CharacterService, private router: Router) { }
 
   ngOnInit(): void {
-    // Llamada al servicio para obtener los personajes de un usuario específico
+    // Llamada al servicio para obtener los personajes de un usuario específicos
     const usuarioId = 1;  // Cambia este valor según el usuario que se loguea o el que desees
     this.characterService.getPersonajes(usuarioId).subscribe({
       next: (data) => {
