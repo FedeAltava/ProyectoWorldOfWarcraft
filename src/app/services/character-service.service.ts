@@ -10,7 +10,7 @@ export class CharacterService {
   private baseUrl = 'https://c74f4156107e.ngrok.app/api/federico/personajes.php?table='; // Base URL
 
   constructor(private http: HttpClient) { }
-
+  personaje
   // Método para crear un personaje
   createPersonaje(personaje: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -18,7 +18,7 @@ export class CharacterService {
   }
 
   // Método para obtener los personajes de un usuario
-  getPersonajes(usuario_id: number): Observable<any> {
+  getPersonajes(usuario_id: number): Observable<personaje> {
     return this.http.get(`${this.baseUrl}personajes&usuario_id=${usuario_id}`);
   }
 
