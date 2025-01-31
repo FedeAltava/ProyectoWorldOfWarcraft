@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CharacterService {
 
-  private baseUrl = 'http://192.168.0.111:80/api/federico/personajes.php?table='; // Base URL
+  private baseUrl = 'https://c74f4156107e.ngrok.app/api/federico/personajes.php?table='; // Base URL
 
   constructor(private http: HttpClient) { }
 

@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CharacterService } from '../../../services/character-service.service';
+import { CharacterService } from '../../../services/character-service.service';  // Asegúrate de importar el CharacterService
+
 
 @Component({
   selector: 'app-editar-personaje',

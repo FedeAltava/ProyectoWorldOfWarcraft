@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/* import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -85,3 +85,4 @@ editarPersonaje(id: number, nombre: string, clase: string, nivel: number, descri
   }
 }
 
+ */
