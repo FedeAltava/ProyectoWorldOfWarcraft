@@ -4,8 +4,7 @@
     <li *ngFor="let personaje of personajes; let i = index">
       <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
       <button id="detail-button" (click)="viewPersonaje(personaje.id)">Detalles</button>
-      <button id="elimin" (click)="borrarPersonaje(personaje.id)">Eliminar</button>
-      <button id="editar" (click)="viewEditPersonaje(personaje.id)">Editar</button> 
+      <button id="editar" (click)="viewEditPersonaje(personaje.id)">Editar</button>
     </li>
   </ul>
   <div *ngIf="personajes.length === 0" class="mensaje">

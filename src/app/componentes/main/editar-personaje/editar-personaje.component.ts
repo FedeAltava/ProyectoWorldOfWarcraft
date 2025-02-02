@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CharacterService } from '../../../services/character-service.service';  // Asegúrate de importar el CharacterService
-
+import { CharacterService } from '../../../services/character-service.service';
+import { Personaje } from '../../../interface/personaje';
 
 @Component({
   selector: 'app-editar-personaje',
@@ -18,8 +17,8 @@ export class EditarPersonajeComponent implements OnInit {
 
   form!: FormGroup;
   ramasDisponibles: string[] = [];
-  personaje: { id: number, nombre: string, clase: string, nivel: number, descripcion: string, rama: string } = { id: -1, nombre: "", clase: "", nivel: 0, descripcion: "", rama: "" };
-  
+  personaje!: Personaje;
+
   clases = [
     { nombre: "Guerrero", ramas: ["Armas", "Furia", "Protección"] },
     { nombre: "Mago", ramas: ["Fuego", "Escarcha", "Arcano"] },
@@ -36,21 +35,25 @@ export class EditarPersonajeComponent implements OnInit {
   ];
 
   constructor(
-    private characterService: CharacterService,  // Usamos CharacterService
+    private characterService: CharacterService,
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id')); // Obtenemos el ID del parámetro de la URL
-    this.characterService.getPersonajeById(id).subscribe(personaje => {
-      this.personaje = personaje;
-      this.initializeForm();
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.characterService.getPersonajeById(id).subscribe({
+      next: (personaje) => {
+        this.personaje = personaje;
+        this.initializeForm();
+      },
+      error: (err) => {
+        console.error('Error al obtener personaje:', err);
+      }
     });
   }
 
-  // Inicializamos el formulario con los valores del personaje
   initializeForm() {
     this.form = this.formBuilder.group({
       nombre: [this.personaje.nombre, [Validators.required]],
@@ -59,32 +62,25 @@ export class EditarPersonajeComponent implements OnInit {
       descripcion: [this.personaje.descripcion, [Validators.required]],
       rama: [this.personaje.rama, [Validators.required]],
     });
-    this.actualizarRamas(this.personaje.clase); // Establecer las ramas según la clase seleccionada
+    this.actualizarRamas(this.personaje.clase);
   }
 
-  // Actualiza las ramas disponibles según la clase seleccionada
   actualizarRamas(claseSeleccionada: string) {
     const clase = this.clases.find(c => c.nombre === claseSeleccionada);
     this.ramasDisponibles = clase ? clase.ramas : [];
-    this.form.get('rama')?.setValue(this.personaje.rama); // Establece la rama en el formulario
   }
 
-  // Método para enviar los cambios de personaje
   editarPersonaje() {
     if (this.form.valid) {
-      const { nombre, clase, nivel, descripcion, rama } = this.form.value;
-      const id = this.personaje.id;
-
-      this.characterService.updatePersonaje(id, { nombre, clase, nivel, descripcion, rama }).subscribe({
+      const datosActualizados: Personaje = this.form.value;
+      this.characterService.updatePersonaje(this.personaje.id, datosActualizados).subscribe({
         next: () => {
-          this.router.navigate(['/personajes']); // Redirige a la lista de personajes después de editar
+          this.router.navigate(['/personajes']);
         },
         error: (err) => {
-          console.error('Error al actualizar el personaje:', err);
+          console.error('Error al actualizar personaje:', err);
         }
       });
-    } else {
-      console.log('Formulario no válido');
     }
   }
 }

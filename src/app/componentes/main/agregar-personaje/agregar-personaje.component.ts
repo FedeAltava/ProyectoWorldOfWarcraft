@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CharacterService } from '../../../services/character-service.service';
+import { Personaje } from '../../../interface/personaje';
 
 @Component({
   selector: 'app-agregar-personaje',
@@ -14,6 +15,7 @@ import { CharacterService } from '../../../services/character-service.service';
 export class AgregarPersonajeComponent implements OnInit {
 
   form!: FormGroup;
+  ramasDisponibles: string[] = [];
 
   clases = [
     { nombre: "Guerrero", ramas: ["Armas", "Furia", "Protección"] },
@@ -30,16 +32,13 @@ export class AgregarPersonajeComponent implements OnInit {
     { nombre: "Cazador de Demonios", ramas: ["Devastación", "Venganza"] },
   ];
 
-  ramasDisponibles: string[] = [];
-
   constructor(
-    private characterService: CharacterService,  // Usamos CharacterService
+    private characterService: CharacterService,
     private router: Router,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    // Inicializamos el formulario con validaciones
     this.form = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       nivel: ['', [Validators.required, Validators.min(1)]],
@@ -49,39 +48,23 @@ export class AgregarPersonajeComponent implements OnInit {
     });
   }
 
-  // Método para actualizar las ramas disponibles según la clase seleccionada
   actualizarRamas(claseSeleccionada: string) {
     const clase = this.clases.find(c => c.nombre === claseSeleccionada);
     this.ramasDisponibles = clase ? clase.ramas : [];
-    this.form.get('rama')?.setValue(''); // Reinicia la rama seleccionada si cambia la clase
+    this.form.get('rama')?.setValue('');
   }
 
-  // Método para enviar el formulario de agregar personaje
   agregarPersonaje() {
     if (this.form.valid) {
-      // Obtenemos los valores del formulario
-      const { nombre, clase, nivel, descripcion, rama } = this.form.value;
-
-      // Llamamos al servicio para agregar el personaje
-      this.characterService.createPersonaje({
-        nombre,
-        clase,
-        nivel,
-        descripcion,
-        rama
-      }).subscribe({
-        next: (data) => {
-          console.log('Personaje creado con éxito:', data);
-          // Redirigimos a la lista de personajes o a donde se desee después de agregar
+      const nuevoPersonaje: Personaje = this.form.value;
+      this.characterService.createPersonaje(nuevoPersonaje).subscribe({
+        next: () => {
           this.router.navigate(['/personajes']);
         },
         error: (err) => {
           console.error('Error al crear personaje:', err);
         }
       });
-    } else {
-      // Si el formulario no es válido, muestra una advertencia o realiza alguna acción
-      console.log('Formulario no válido');
     }
   }
 }
