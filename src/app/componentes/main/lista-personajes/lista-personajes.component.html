@@ -7,6 +7,7 @@
       <button id="editar" (click)="viewEditPersonaje(personaje.id)">Editar</button>
     </li>
   </ul>
+  <!-- Mensaje si no hay personajes -->
   <div *ngIf="personajes.length === 0" class="mensaje">
     No hay personajes en la lista.
   </div>

@@ -10,7 +10,7 @@
     <!-- Clase -->
     <div>
       <label for="clase">Clase:</label>
-      <select id="clase" formControlName="clase" (change)="actualizarRamas(clases[0].nombre)" required>
+      <select id="clase" formControlName="clase" (change)="actualizarRamas($event)">
         <option *ngFor="let clase of clases" [value]="clase.nombre">{{ clase.nombre }}</option>
       </select>
     </div>
@@ -30,7 +30,7 @@
     <!-- Rama -->
     <div>
       <label for="rama">Rama:</label>
-      <select id="rama" formControlName="rama" required>
+      <select id="rama" formControlName="rama">
         <option *ngFor="let rama of ramasDisponibles" [value]="rama">{{ rama }}</option>
       </select>
     </div>

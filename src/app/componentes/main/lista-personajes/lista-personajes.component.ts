@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CharacterService } from '../../../services/character-service.service';
 import { Personaje } from '../../../interface/personaje';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lista-personaje',
@@ -12,23 +12,22 @@ import { Personaje } from '../../../interface/personaje';
   styleUrls: ['./lista-personajes.component.css']
 })
 export class ListaPersonajeComponent implements OnInit {
-
-  personajes: Personaje[] = [];
+  personajes: Personaje[] = []; // Inicializamos como un array vacío
 
   constructor(
     private characterService: CharacterService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    // Obtener la lista de personajes del usuario
     const usuarioId = 1; // ID del usuario logueado
     this.characterService.getPersonajes(usuarioId).subscribe({
-      next: (data) => {
-        this.personajes = data;
+      next: (data: Personaje[]) => {
+        this.personajes = data; // Asignamos los datos directamente
       },
       error: (err) => {
         console.error('Error al obtener personajes:', err);
+        this.personajes = []; // Inicializamos como un array vacío en caso de error
       }
     });
   }

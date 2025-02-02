@@ -1,41 +1,14 @@
-<div class="agregar-personaje">
-  <h2>Agregar Personaje de WoW</h2>
-  <form [formGroup]="form" (ngSubmit)="agregarPersonaje()">
-    <!-- Nombre -->
-    <div>
-      <label for="nombre">Nombre :</label>
-      <input type="text" id="nombre" formControlName="nombre"/>
-    </div>
-
-    <!-- Clase -->
-    <div>
-      <label for="clase">Clase:</label>
-      <select id="clase" formControlName="clase" (change)="actualizarRamas(clases[0].nombre)">
-        <option *ngFor="let clase of clases" [value]="clase.nombre">{{ clase.nombre }}</option>
-      </select>
-    </div>
-
-    <!-- Nivel -->
-    <div>
-      <label for="nivel">Nivel :</label>
-      <input type="number" id="nivel" formControlName="nivel"/>
-    </div>
-
-    <!-- Descripción -->
-    <div>
-      <label for="descripcion">Descripción :</label>
-      <input type="text" id="descripcion" formControlName="descripcion"/>
-    </div>
-
-    <!-- Rama -->
-    <div>
-      <label for="rama">Rama:</label>
-      <select id="rama" formControlName="rama">
-        <option *ngFor="let rama of ramasDisponibles" [value]="rama">{{ rama }}</option>
-      </select>
-    </div>
-
-    <!-- Botón de envío -->
-    <button type="submit" [disabled]="form.invalid">Agregar</button>
-  </form>
-</div>
+<form [formGroup]="form" (ngSubmit)="agregarPersonaje()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" required />
+  </div>
+  <div>
+    <label for="clase">Clase:</label>
+    <select id="clase" formControlName="clase" (change)="actualizarRamas($event)">
+      <option value="">Selecciona una clase</option>
+      <!-- Opciones dinámicas -->
+    </select>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Agregar</button>
+</form>
