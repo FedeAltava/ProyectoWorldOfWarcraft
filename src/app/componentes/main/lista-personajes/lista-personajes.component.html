@@ -3,8 +3,8 @@
   <ul>
     <li *ngFor="let personaje of personajes; let i = index">
       <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
-      <button id="detail-button" (click)="viewPersonaje(personaje.id)">Detalles</button>
-      <button id="editar" (click)="viewEditPersonaje(personaje.id)">Editar</button>
+      <button id="detail-button" (click)="viewPersonaje(personaje.id ?? -1)">Detalles</button>
+      <button id="editar" (click)="viewEditPersonaje(personaje.id ?? -1)">Editar</button>
     </li>
   </ul>
   <!-- Mensaje si no hay personajes -->

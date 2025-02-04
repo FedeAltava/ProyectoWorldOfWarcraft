@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Personaje } from '../interface/personaje';
 
 @Injectable({
@@ -15,13 +15,28 @@ export class CharacterService {
   // Método para obtener los personajes de un usuario
   getPersonajes(usuario_id: number): Observable<Personaje[]> {
     return this.http.get<any>(`${this.baseUrl}personajes&usuario_id=${usuario_id}`).pipe(
-      map((response) => {
+      map((response: { data: any[] }) => {
         if (response && response.data && Array.isArray(response.data)) {
-          return response.data; // Devuelve solo el array de personajes
+          return response.data.map((item: any) => ({
+            id: item.id,
+            usuario_id: item.usuario_id,
+            tipo_id: item.tipo_id,
+            clase: item.clase,
+            subclase: item.subclase || '',
+            descripcion: item.descripcion || '',
+            fecha_creacion: item.fecha_creacion,
+            nombre: item.nombre || '',
+            nivel: item.nivel || 1,
+            rama: item.rama || ''
+          }));
         } else {
           console.error('La respuesta no tiene la estructura esperada:', response);
-          return []; // Devuelve un array vacío en caso de error
+          return [];
         }
+      }),
+      catchError((error) => {
+        console.error('Error al obtener personajes:', error);
+        return throwError(() => new Error('Error al obtener personajes'));
       })
     );
   }
@@ -29,7 +44,14 @@ export class CharacterService {
   // Método para crear un personaje
   createPersonaje(personaje: Personaje): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.baseUrl}personajes`, personaje, { headers });
+
+    // Convierte el objeto personaje a JSON antes de enviarlo
+    return this.http.post(`${this.baseUrl}personajes`, personaje, { headers }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al crear personaje:', error);
+        return throwError(() => new Error('Error al crear personaje'));
+      })
+    );
   }
 
   // Método para obtener un personaje específico por ID

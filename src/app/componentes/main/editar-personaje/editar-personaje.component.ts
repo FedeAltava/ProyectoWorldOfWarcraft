@@ -49,9 +49,9 @@ export class EditarPersonajeComponent implements OnInit {
       nombre: [this.personaje.nombre, [Validators.required]],
       clase: [this.personaje.clase, [Validators.required]],
       nivel: [this.personaje.nivel, [Validators.required, Validators.min(1)]],
-      descripcion: [this.personaje.descripcion, [Validators.required]],
-      rama: [this.personaje.rama, [Validators.required]]
+      descripcion: [this.personaje.descripcion, [Validators.required]]
     });
+    this.inicializarRamas(this.personaje.clase || '');
   }
 
   actualizarRamas(event: Event) {
@@ -63,12 +63,12 @@ export class EditarPersonajeComponent implements OnInit {
   }
 
   inicializarRamas(clase: string) {
-    this.ramasDisponibles = this.clases.find(c => c.nombre === clase)?.ramas || [];
-    this.form.get('rama')?.setValue('');
+    this.ramasDisponibles = this.clases.find(claseObj => claseObj.nombre === clase)?.ramas || [];
+    this.form.get('rama')?.setValue(''); // Limpiar selección de rama
   }
 
   editarPersonaje() {
-    if (this.form.valid) {
+    if (this.form.valid && this.personaje.id !== undefined) {
       const datosActualizados: Personaje = this.form.value;
       this.characterService.updatePersonaje(this.personaje.id, datosActualizados).subscribe({
         next: () => {
@@ -78,6 +78,8 @@ export class EditarPersonajeComponent implements OnInit {
           console.error('Error al actualizar personaje:', err);
         }
       });
+    } else {
+      console.error('ID del personaje no definido');
     }
   }
 }

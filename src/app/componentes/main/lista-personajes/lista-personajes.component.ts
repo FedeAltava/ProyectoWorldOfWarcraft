@@ -33,12 +33,19 @@ export class ListaPersonajeComponent implements OnInit {
   }
 
   // Navegar a la vista de detalles del personaje
-  viewPersonaje(id: number): void {
-    this.router.navigate(['/personaje', id]);
+  viewPersonaje(id: number | undefined): void {
+    if (id !== undefined) {
+      this.router.navigate(['/personaje', id]);
+    } else {
+      console.error('ID del personaje no definido');
+    }
   }
-
-  // Navegar a la vista de edición del personaje
-  viewEditPersonaje(id: number): void {
-    this.router.navigate(['/editar-personaje', id]);
+  
+  viewEditPersonaje(id: number | undefined): void {
+    if (id !== undefined) {
+      this.router.navigate(['/editar-personaje', id]);
+    } else {
+      console.error('ID del personaje no definido');
+    }
   }
 }

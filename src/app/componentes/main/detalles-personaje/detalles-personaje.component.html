@@ -4,9 +4,8 @@
   </div>
 
   <div *ngIf="personaje" class="personaje-detail-card">
-    <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
-    <h3>{{ personaje.nombre }}</h3>
-    <p><strong>Rama:</strong> {{ personaje.rama }}</p>
+    <strong>{{ personaje.nombre || 'Sin nombre' }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel || 'Desconocido' }})
+    <h3>{{ personaje.nombre || 'Sin nombre' }}</h3>
     <p><strong>Descripción:</strong> {{ personaje.descripcion }}</p>
     <a id="volver-link" routerLink="/list">Volver a la lista de personajes</a>
   </div>

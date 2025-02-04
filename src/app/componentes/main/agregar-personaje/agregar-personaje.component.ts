@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CharacterService } from '../../../services/character-service.service';
 
 @Component({
   selector: 'app-agregar-personaje',
@@ -26,18 +25,17 @@ export class AgregarPersonajeComponent implements OnInit {
     { nombre: "Brujo", subclases: ["Aflicción", "Demonología", "Destrucción"] },
     { nombre: "Cazador de Demonios", subclases: ["Devastación", "Venganza"] }
   ];
-  subclasesDisponibles: string[] = []; // Almacena las subclases disponibles
+  subclasesDisponibles: string[] = [];
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private characterService: CharacterService
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    const usuarioIdLogueado = 1; // Ejemplo: Obtén el ID del usuario logueado
     this.form = this.formBuilder.group({
+      usuario_id: [usuarioIdLogueado, [Validators.required]], // ID del usuario
       nombre: ['', [Validators.required]],
       nivel: ['', [Validators.required, Validators.min(1)]],
-      tipo_id: ['', [Validators.required]], // Campo para el tipo_id
+      tipo_id: ['', [Validators.required]], // ID del tipo de personaje
       clase: ['', [Validators.required]],
       subclase: ['', []], // Subclase no es obligatoria
       descripcion: ['', [Validators.required]]
@@ -50,24 +48,14 @@ export class AgregarPersonajeComponent implements OnInit {
       const claseSeleccionada = this.clases.find(clase => clase.nombre === target.value);
       this.subclasesDisponibles = claseSeleccionada?.subclases || [];
       this.form.get('subclase')?.setValue(''); // Limpiar selección de subclase
-    } else {
-      this.subclasesDisponibles = []; // Si no hay clase seleccionada, vacía las subclases
     }
   }
 
   agregarPersonaje() {
     if (this.form.valid) {
-      const nuevoPersonaje = this.form.value;
-      this.characterService.createPersonaje(nuevoPersonaje).subscribe({
-        next: () => {
-          alert('Personaje agregado exitosamente');
-          this.form.reset(); // Reinicia el formulario
-        },
-        error: (err) => {
-          console.error('Error al agregar personaje:', err);
-          alert('Ocurrió un error al agregar el personaje.');
-        }
-      });
+      console.log(this.form.value); // Datos del formulario
+    } else {
+      alert('Por favor, completa todos los campos requeridos.');
     }
   }
 }
