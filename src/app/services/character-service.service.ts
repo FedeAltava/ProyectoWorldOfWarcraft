@@ -15,18 +15,13 @@ export class CharacterService {
   // Método para obtener los personajes de un usuario
   getPersonajes(usuario_id: number): Observable<Personaje[]> {
     return this.http.get<any>(`${this.baseUrl}personajes&usuario_id=${usuario_id}`).pipe(
-      map((response: any) => {
-        // Si la respuesta contiene un array en una propiedad específica (por ejemplo, "data")
-        if (response && Array.isArray(response.data)) {
-          return response.data;
+      map((response) => {
+        if (response && response.data && Array.isArray(response.data)) {
+          return response.data; // Devuelve solo el array de personajes
+        } else {
+          console.error('La respuesta no tiene la estructura esperada:', response);
+          return []; // Devuelve un array vacío en caso de error
         }
-        // Si la respuesta ya es un array
-        if (Array.isArray(response)) {
-          return response;
-        }
-        // Si no cumple con ninguna de las condiciones anteriores, devuelve un array vacío
-        console.error('La respuesta no tiene la estructura esperada:', response);
-        return [];
       })
     );
   }

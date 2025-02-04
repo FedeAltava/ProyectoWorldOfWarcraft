@@ -3,12 +3,42 @@
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" formControlName="nombre" required />
   </div>
+
   <div>
-    <label for="clase">Clase:</label>
-    <select id="clase" formControlName="clase" (change)="actualizarRamas($event)">
-      <option value="">Selecciona una clase</option>
-      <!-- Opciones dinámicas -->
+    <label for="nivel">Nivel:</label>
+    <input type="number" id="nivel" formControlName="nivel" required />
+  </div>
+
+  <div>
+    <label for="tipo_id">Tipo:</label>
+    <select id="tipo_id" formControlName="tipo_id" required>
+      <option value="">Selecciona un tipo</option>
+      <!-- Aquí puedes cargar dinámicamente los tipos desde la base de datos -->
+      <option value="1">Clase Principal</option> <!-- Ejemplo -->
+      <option value="2">Clase Secundaria</option> <!-- Ejemplo -->
     </select>
   </div>
+
+  <div>
+    <label for="clase">Clase:</label>
+    <select id="clase" formControlName="clase" (change)="actualizarSubclases($event)" required>
+      <option value="">Selecciona una clase</option>
+      <option *ngFor="let clase of clases" [value]="clase.nombre">{{ clase.nombre }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="subclase">Subclase:</label>
+    <select id="subclase" formControlName="subclase">
+      <option value="">Selecciona una subclase</option>
+      <option *ngFor="let subclase of subclasesDisponibles" [value]="subclase">{{ subclase }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion" required></textarea>
+  </div>
+
   <button type="submit" [disabled]="form.invalid">Agregar</button>
 </form>

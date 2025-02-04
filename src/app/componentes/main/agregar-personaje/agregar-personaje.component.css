@@ -1,69 +1,120 @@
+/* Contenedor principal del formulario */
 .agregar-personaje {
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.2);
-  padding: 20px; 
-  border-radius: 8px; 
-  max-width: 400px; 
-  margin: 2% auto; 
+  backdrop-filter: blur(15px); /* Filtro de desenfoque */
+  background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  max-width: 400px; /* Ancho máximo */
+  margin: 2% auto; /* Centrado horizontal */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
 }
 
+/* Título del formulario */
 h2 {
-  font-family: 'Georgia', serif; 
-  font-size: 1.5em; 
-  color: #ffd700; 
-  text-align: center;
+  font-family: 'Georgia', serif; /* Fuente elegante */
+  font-size: 1.5em; /* Tamaño de fuente */
+  color: #ffd700; /* Color dorado */
+  text-align: center; /* Centrado */
   text-shadow: 
-      2px 2px 5px rgba(0, 0, 0, 0.7), 
-      0 0 10px rgba(0, 191, 255, 0.7), 
-      0 0 20px rgba(0, 191, 255, 0.5); 
-  padding: 10px; 
-  margin: 20px 0; 
+    2px 2px 5px rgba(0, 0, 0, 0.7), /* Sombra oscura */
+    0 0 10px rgba(0, 191, 255, 0.7), /* Brillo azul */
+    0 0 20px rgba(0, 191, 255, 0.5); /* Efecto luminoso */
+  padding: 10px; /* Espaciado interno */
+  margin: 20px 0; /* Margen superior e inferior */
 }
 
-
+/* Estilo general del formulario */
 form {
-  display: flex; 
-  flex-direction: column; 
+  display: flex; /* Diseño flexible */
+  flex-direction: column; /* Elementos en columna */
+  gap: 15px; /* Espacio entre elementos */
 }
-form div{
-  display: flex; 
-  justify-content: space-between;
+
+/* Contenedor de cada campo del formulario */
+form div {
+  display: flex; /* Diseño flexible */
+  flex-direction: column; /* Etiquetas y campos en columna */
 }
+
+/* Estilo de las etiquetas */
 label {
-  margin-bottom: 5px; 
-  font-weight: bold; 
-  color: #333; 
+  margin-bottom: 5px; /* Espaciado inferior */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color oscuro */
+  font-family: 'Arial', sans-serif; /* Fuente estándar */
 }
 
+/* Estilo de los inputs y selects */
 input, select {
-  margin-bottom: 15px; 
-  padding: 10px; 
-  font-size: 16px; 
-  border-radius: 4px; 
-  border: 1px solid #ccc; 
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 4px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde claro */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave */
 }
 
+/* Hover en inputs y selects */
+input:hover, select:hover {
+  border-color: #ffd700; /* Borde dorado al pasar el mouse */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Estilo del botón */
 button {
-  font-family: 'Georgia', serif; 
-  font-size: 16px;
-  color: #ffd700; 
-  padding: 2px 2px;
-  border: 2px solid #8B4513; 
-  border-radius: 8px;
-  background: linear-gradient(145deg, #8B0000, #FF4500); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-button:hover{
-  color: #ffffff; 
-  border-color: #ffd700; 
-  transform: scale(1.05); 
-  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
-
+  font-family: 'Georgia', serif; /* Fuente elegante */
+  font-size: 16px; /* Tamaño de fuente */
+  color: #ffd700; /* Texto dorado */
+  padding: 10px; /* Espaciado interno */
+  border: 2px solid #8B4513; /* Borde marrón */
+  border-radius: 8px; /* Bordes redondeados */
+  background: linear-gradient(145deg, #8B0000, #FF4500); /* Degradado rojo-naranja */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra profunda */
+  cursor: pointer; /* Cursor de clic */
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s; /* Transiciones */
 }
 
+/* Hover del botón */
 button:hover {
-  background-color: #0056b3; 
+  color: #ffffff; /* Texto blanco al pasar el mouse */
+  border-color: #ffd700; /* Borde dorado */
+  transform: scale(1.05); /* Aumento de tamaño */
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); /* Sombra brillante */
+  background: linear-gradient(145deg, #FF4500, #8B0000); /* Degradado inverso */
 }
-  
+
+/* Botón activo (al hacer clic) */
+button:active {
+  transform: scale(0.98); /* Reducción de tamaño */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Sombra más pequeña */
+}
+
+/* Estilo para textarea */
+textarea {
+  resize: none; /* Desactiva el redimensionamiento */
+  height: 100px; /* Altura fija */
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 4px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde claro */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave */
+}
+
+/* Hover en textarea */
+textarea:hover {
+  border-color: #ffd700; /* Borde dorado al pasar el mouse */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Estilo para options en select */
+select option {
+  background-color: #fff; /* Fondo blanco */
+  color: #333; /* Texto oscuro */
+}
+
+/* Estilo para placeholder en inputs */
+::placeholder {
+  color: #aaa; /* Color gris claro */
+  opacity: 1; /* Opacidad completa */
+}
