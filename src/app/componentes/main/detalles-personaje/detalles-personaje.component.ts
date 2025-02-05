@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importar CommonModule
-import { RouterLink } from '@angular/router'; // Importar RouterLink
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../../../services/character-service.service';
-import { Personaje } from '../../../interface/personaje'; // Asegúrate de que esta interfaz exista
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detalles-personaje',
   standalone: true,
-  imports: [CommonModule, RouterLink], // Incluir CommonModule y RouterLink aquí
+  imports: [CommonModule],
   templateUrl: './detalles-personaje.component.html',
   styleUrls: ['./detalles-personaje.component.css']
 })
 export class DetallesPersonajeComponent implements OnInit {
-  personaje!: Personaje; // Usar la interfaz Personaje para tipar la variable
+  personaje: any; // Objeto para almacenar los datos del personaje
+  isLoading = true; // Indicador de carga
 
   constructor(
     private route: ActivatedRoute,
@@ -21,13 +20,21 @@ export class DetallesPersonajeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
+    const id = +this.route.snapshot.paramMap.get('id')!; // Obtiene el ID de la URL
+    if (isNaN(id)) {
+      console.error('ID del personaje no válido');
+      this.isLoading = false;
+      return;
+    }
+
     this.characterService.getPersonajeById(id).subscribe({
-      next: (personaje) => {
-        this.personaje = personaje;
+      next: (data) => {
+        this.personaje = data;
+        this.isLoading = false; // Finaliza la carga
       },
       error: (err) => {
         console.error('Error al obtener el personaje:', err);
+        this.isLoading = false; // Finaliza la carga en caso de error
       }
     });
   }

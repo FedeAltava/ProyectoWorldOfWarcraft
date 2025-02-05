@@ -1,51 +1,74 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { CharacterService } from '../../../services/character-service.service';
 import { Personaje } from '../../../interface/personaje';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-lista-personaje',
+  selector: 'app-lista-personajes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './lista-personajes.component.html',
   styleUrls: ['./lista-personajes.component.css']
 })
-export class ListaPersonajeComponent implements OnInit {
-  personajes: Personaje[] = []; // Inicializamos como un array vacío
+export class ListaPersonajesComponent implements OnInit {
+  personajes: Personaje[] = [];
+  isLoading = true;
+  errorMessage = '';
 
-  constructor(
-    private characterService: CharacterService,
-    private router: Router
-  ) {}
+  constructor(private characterService: CharacterService) {}
 
   ngOnInit(): void {
-    const usuarioId = 1; // ID del usuario logueado
-    this.characterService.getPersonajes(usuarioId).subscribe({
-      next: (data: Personaje[]) => {
-        this.personajes = data; // Asignamos los datos directamente
+  
+    this.characterService.getPersonajes().subscribe({
+      next: (data) => {
+        if (Array.isArray(data)) {
+          this.personajes = data;
+        } else {
+          this.errorMessage = 'La respuesta de la API no es válida.';
+        }
+        this.isLoading = false;
       },
       error: (err) => {
         console.error('Error al obtener personajes:', err);
-        this.personajes = []; // Inicializamos como un array vacío en caso de error
+        this.errorMessage = 'Error al cargar los personajes. Por favor, intenta nuevamente.';
+        this.isLoading = false;
       }
     });
   }
-
-  // Navegar a la vista de detalles del personaje
-  viewPersonaje(id: number | undefined): void {
-    if (id !== undefined) {
-      this.router.navigate(['/personaje', id]);
+  // Método para eliminar un personaje
+  deletePersonaje(id: number): void {
+    if (id !== undefined && !isNaN(id)) {
+      if (confirm('¿Estás seguro de que deseas eliminar este personaje?')) {
+        this.characterService.deletePersonaje(id).subscribe({
+          next: () => {
+            // Eliminar el personaje de la lista local
+            this.personajes = this.personajes.filter(personaje => personaje.id !== id);
+            alert('Personaje eliminado correctamente.');
+          },
+          error: (err) => {
+            console.error('Error al eliminar personaje:', err);
+            alert(`No se pudo eliminar el personaje. Razón: ${err.message}`);
+          }
+        });
+      }
     } else {
-      console.error('ID del personaje no definido');
+      console.error('ID del personaje no válido:', id);
     }
   }
-  
-  viewEditPersonaje(id: number | undefined): void {
-    if (id !== undefined) {
-      this.router.navigate(['/editar-personaje', id]);
+  viewPersonaje(id: number): void {
+    if (id !== undefined && !isNaN(id)) {
+      window.location.href = `/personaje/${id}`;
     } else {
-      console.error('ID del personaje no definido');
+      console.error('ID del personaje no válido:', id);
+    }
+  }
+
+  viewEditPersonaje(id: number): void {
+    if (id !== undefined && !isNaN(id)) {
+      window.location.href = `/editar-personaje/${id}`;
+    } else {
+      console.error('ID del personaje no válido:', id);
     }
   }
 }
