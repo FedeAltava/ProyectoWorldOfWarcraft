@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./detalles-personaje.component.css']
 })
 export class DetallesPersonajeComponent implements OnInit {
-  personaje: any; // Objeto para almacenar los datos del personaje
-  isLoading = true; // Indicador de carga
+  personaje: any = null;
+  isLoading = true;
 
   constructor(
     private route: ActivatedRoute,

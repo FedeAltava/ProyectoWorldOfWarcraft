@@ -1,16 +1,18 @@
-<div class="personaje-detail-container">
-  <div class="personaje-header">
-    <h2>Detalles del personaje</h2>
-  </div>
+<div *ngIf="isLoading" class="loading">
+  <p>Cargando detalles del personaje...</p>
+</div>
 
-  <div *ngIf="personaje" class="personaje-detail-card">
-    <strong>{{ personaje.nombre || 'Sin nombre' }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel || 'Desconocido' }})
-    <h3>{{ personaje.nombre || 'Sin nombre' }}</h3>
-    <p><strong>Descripción:</strong> {{ personaje.descripcion }}</p>
-    <a id="volver-link" routerLink="/list">Volver a la lista de personajes</a>
-  </div>
+<div *ngIf="personaje" class="personaje-detalles">
+  <h2>Detalles del Personaje</h2>
+  <p><strong>ID:</strong> {{ personaje.id }}</p>
+  <p><strong>Nombre:</strong> {{ personaje.nombre }}</p>
+  <p><strong>Clase:</strong> {{ personaje.clase }}</p>
+  <p><strong>Subclase:</strong> {{ personaje.subclase }}</p>
+  <p><strong>Descripción:</strong> {{ personaje.descripcion }}</p>
+  <p><strong>Tipo:</strong> {{ personaje.tipo }}</p>
+  <p><strong>Usuario:</strong> {{ personaje.usuario }}</p>
+</div>
 
-  <div *ngIf="!personaje" class="loading-message">
-    Cargando detalles del personaje...
-  </div>
+<div *ngIf="!isLoading && !personaje" class="mensaje">
+  <p>No se encontraron detalles para este personaje.</p>
 </div>

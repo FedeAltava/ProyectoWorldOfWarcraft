@@ -51,7 +51,7 @@ getPersonajes(): Observable<Personaje[]> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     // Convierte el objeto personaje a JSON antes de enviarlo
-    return this.http.post(`${this.baseUrl}personajes`, personaje, { headers }).pipe(  // Cambié las comillas simples por comillas invertidas
+    return this.http.post(`${this.baseUrl}personajes`, personaje, { headers }).pipe(  
       catchError((error: HttpErrorResponse) => {
         console.error('Error al crear personaje:', error);
         return throwError(() => new Error('Error al crear personaje'));
@@ -61,9 +61,10 @@ getPersonajes(): Observable<Personaje[]> {
 
   // Método para obtener un personaje específico por ID
   getPersonajeById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}personajes&id=${id}`).pipe(  // Cambié las comillas simples por comillas invertidas
+    const url = `${this.baseUrl}personajes&id=${id}`;
+    return this.http.get(url).pipe(
       map((response: any) => {
-        if (response && response.data) {
+        if (response && response.status === "success" && response.data) {
           return response.data; // Devuelve los datos del personaje
         } else {
           console.error('Respuesta inválida de la API:', response);
@@ -79,7 +80,7 @@ getPersonajes(): Observable<Personaje[]> {
 
   // Método para actualizar un personaje
   updatePersonaje(id: number, data: Personaje): Observable<any> {
-    return this.http.put(`${this.baseUrl}personajes&id=${id}`, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });  // Cambié las comillas simples por comillas invertidas
+    return this.http.put(`${this.baseUrl}personajes&id=${id}`, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });  
   }
 
   // Método para eliminar un personaje
