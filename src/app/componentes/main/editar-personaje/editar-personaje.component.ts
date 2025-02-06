@@ -18,8 +18,18 @@ export class EditarPersonajeComponent implements OnInit {
   ramasDisponibles: string[] = [];
   clases = [
     { nombre: "Guerrero", ramas: ["Armas", "Furia", "Protección"] },
-    { nombre: "Mago", ramas: ["Fuego", "Escarcha", "Arcano"] },
-    { nombre: "Pícaro", ramas: ["Asesinato", "Combate", "Sutileza"] },
+    { nombre: "Paladín", ramas: ["Sagrado", "Protección", "Venganza"] },
+    { nombre: "Cazador", ramas: ["Bestias", "Survival", "Tiro"] },
+    { nombre: "Druida", ramas: ["Equilibrio", "Feral", "Guardia Estelar", "Restauración"] },
+    { nombre: "Chamán", ramas: ["Elemental", "Mejoramiento", "Restauración"] },
+    { nombre: "Mago", ramas: ["Arcano", "Fuego", "Escarcha"] },
+    { nombre: "Sacerdote", ramas: ["Disciplina", "Sagrado", "Sombra"] },
+    { nombre: "Pícaro", ramas: ["Asesinato", "Combate", "Sigilo"] },
+    { nombre: "Monje", ramas: ["Tempestad", "Tejedor de Niebla", "Carrionero"] },
+    { nombre: "Caballero de la Muerte", ramas: ["Hielo", "Pestilencia", "Sangre"] },
+    { nombre: "Brujo", ramas: ["Destructiva", "Aflicción", "Demonología"] },
+    { nombre: "Cazador de Demonios", ramas: ["Venganza", "Caos"] },
+    { nombre: "Vengador", ramas: ["Defensa", "Ofensiva"] }, 
   ];
 
   constructor(
