@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CharacterService } from '../../../services/character-service.service';
 import { Personaje } from '../../../interface/personaje';
 
@@ -16,7 +16,7 @@ export class ListaPersonajesComponent implements OnInit {
   isLoading = true;
   errorMessage = '';
 
-  constructor(private characterService: CharacterService) {}
+  constructor(private characterService: CharacterService,private router: Router) {}
 
   ngOnInit(): void {
   
@@ -64,11 +64,12 @@ export class ListaPersonajesComponent implements OnInit {
     }
   }
 
-  viewEditPersonaje(id: number): void {
-    if (id !== undefined && !isNaN(id)) {
-      window.location.href = `/editar-personaje/${id}`;
+  viewEditPersonaje(id: number | undefined) {
+    if (id !== undefined) {
+      this.router.navigate(['/editar-personaje', id]);
     } else {
-      console.error('ID del personaje no válido:', id);
+      console.error('ID del personaje no válido');
+      alert('No se puede editar el personaje porque falta su ID.');
     }
   }
 }

@@ -78,10 +78,24 @@ getPersonajes(): Observable<Personaje[]> {
     );
   }
 
-  // Método para actualizar un personaje
-  updatePersonaje(id: number, data: Personaje): Observable<any> {
-    return this.http.put(`${this.baseUrl}personajes&id=${id}`, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });  
-  }
+
+// Método para actualizar un personaje
+updatePersonaje(id: number, data: Partial<Personaje>): Observable<any> {
+  const url = `${this.baseUrl}personajes&id=${id}`;
+  return this.http.put(url, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).pipe(
+      map((response: any) => {
+          if (response && response.message === "Personaje actualizado correctamente") {
+              return response; // Devuelve la respuesta exitosa
+          } else {
+              throw new Error('No se pudo actualizar el personaje');
+          }
+      }),
+      catchError((error) => {
+          console.error('Error al actualizar el personaje:', error);
+          return throwError(() => new Error('Error al actualizar el personaje'));
+      })
+  );
+}
 
   // Método para eliminar un personaje
   deletePersonaje(id: number): Observable<any> {

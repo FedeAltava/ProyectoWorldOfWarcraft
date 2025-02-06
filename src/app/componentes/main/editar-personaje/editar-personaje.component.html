@@ -1,41 +1,33 @@
-<div class="editar-personaje">
-  <h2>Editar Personaje</h2>
+<div *ngIf="form">
   <form [formGroup]="form" (ngSubmit)="editarPersonaje()">
-    <!-- Nombre -->
     <div>
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" formControlName="nombre" required />
+      <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">Campo requerido</small>
     </div>
-
-    <!-- Clase -->
     <div>
       <label for="clase">Clase:</label>
-      <select id="clase" formControlName="clase" (change)="actualizarRamas($event)">
+      <select id="clase" formControlName="clase" (change)="actualizarRamas($event)" required>
         <option *ngFor="let clase of clases" [value]="clase.nombre">{{ clase.nombre }}</option>
       </select>
+      <small *ngIf="form.get('clase')?.invalid && form.get('clase')?.touched">Campo requerido</small>
     </div>
-
-    <!-- Nivel -->
     <div>
       <label for="nivel">Nivel:</label>
       <input type="number" id="nivel" formControlName="nivel" required />
+      <small *ngIf="form.get('nivel')?.invalid && form.get('nivel')?.touched">Debe ser un número mayor a 0</small>
     </div>
-
-    <!-- Descripción -->
     <div>
       <label for="descripcion">Descripción:</label>
-      <input type="text" id="descripcion" formControlName="descripcion" required />
+      <textarea id="descripcion" formControlName="descripcion" required></textarea>
+      <small *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched">Campo requerido</small>
     </div>
-
-    <!-- Rama -->
     <div>
-      <label for="rama">Rama:</label>
-      <select id="rama" formControlName="rama">
+      <label for="subclase">Subclase:</label>
+      <select id="subclase" formControlName="subclase">
         <option *ngFor="let rama of ramasDisponibles" [value]="rama">{{ rama }}</option>
       </select>
     </div>
-
-    <!-- Botón de envío -->
     <button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
   </form>
 </div>
