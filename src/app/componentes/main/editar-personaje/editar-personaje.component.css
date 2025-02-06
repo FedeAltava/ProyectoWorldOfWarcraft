@@ -1,69 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1)); /* Fondo oscuro con degrade */
+}
 
 .editar-personaje {
     backdrop-filter: blur(15px);
     background: rgba(149, 56, 56, 0.2);
-    border-radius: 8px; 
-    max-width: 400px; 
-    margin: 2% auto; 
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%; /* Ajusta automáticamente según el contenido */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Agrega sombra para destacar */
+    overflow: hidden; /* Evita desbordamiento si hay scroll */
 }
-form{
-    padding: 2%;
-}
-h2 {
-    font-family: 'Georgia', serif; 
-    font-size: 2.5em; 
-    color: #ffd700; 
-    text-align: center;
-    text-shadow: 
-        2px 2px 5px rgba(0, 0, 0, 0.7),  
-        0 0 10px rgba(0, 191, 255, 0.7), 
-        0 0 20px rgba(0, 191, 255, 0.5); 
-    padding: 10px; 
-    margin: 20px 0; 
-}
-
-
 
 form {
-    display: flex; 
+    padding: 20px; /* Espaciado interior */
+    display: flex;
     flex-direction: column;
-   
+    gap: 15px; /* Espacio entre elementos */
 }
-form div{
-    display: flex; 
-    justify-content: space-between;
+
+h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    color: #ffd700;
+    text-align: center;
+    text-shadow: 
+        2px 2px 5px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(0, 191, 255, 0.7),
+        0 0 20px rgba(0, 191, 255, 0.5);
+    margin: 0; /* Elimina margen por defecto */
+    padding: 10px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column; /* Coloca label y campo uno debajo del otro */
 }
 
 label {
-    margin-bottom: 5px; 
-    font-weight: bold; 
-    color: #333; 
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
 }
 
-input, select {
-    margin-bottom: 15px; 
-    padding: 10px; 
-    font-size: 16px; 
-    border-radius: 4px; 
-    border: 1px solid #ccc; 
+input, select, textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    color: #333; /* Color de texto */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #ffd700; /* Cambia el color del borde al enfocar */
+    background-color: #fff; /* Cambia el fondo al enfocar */
 }
 
 button {
-    font-family: 'Georgia', serif; 
+    font-family: 'Georgia', serif;
     font-size: 16px;
-    color: #ffd700; 
+    color: #ffd700;
     padding: 12px 24px;
-    border: 2px solid #8B4513; 
+    border: 2px solid #8B4513;
     border-radius: 8px;
-    background: linear-gradient(145deg, #8B0000, #FF4500); 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    background: linear-gradient(145deg, #8B0000, #FF4500);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  button:hover {
-    color: #ffffff; 
-    border-color: #ffd700; 
-    transform: scale(1.05); 
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    align-self: center; /* Centra el botón dentro del formulario */
+}
+
+button:hover {
+    color: #ffffff;
+    border-color: #ffd700;
+    transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
-  }
+    background: linear-gradient(145deg, #FF4500, #8B0000); /* Invierte el degrade al pasar el mouse */
+}
+
+small {
+    color: red; /* Color para mensajes de error */
+    font-size: 12px;
+    margin-top: 5px;
+}
