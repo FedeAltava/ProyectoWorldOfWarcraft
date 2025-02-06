@@ -98,23 +98,27 @@ export class EditarPersonajeComponent implements OnInit {
 
   editarPersonaje() {
     if (this.form.valid && this.personaje.id !== undefined && this.personaje.id !== null) {
-      const datosActualizados: Partial<Personaje> = {
-        ...this.form.value,
-        id: this.personaje.id,
-      };
+        const datosActualizados: Partial<Personaje> = {
+            ...this.form.value,
+            id: this.personaje.id,
+        };
 
-      this.characterService.updatePersonaje(this.personaje.id, datosActualizados).subscribe({
-        next: () => {
-          alert('Personaje actualizado correctamente');
-          this.router.navigate(['/personajes']); // Redirige a la lista de personajes
-        },
-        error: (err) => {
-          console.error('Error al actualizar personaje:', err);
-          alert('Ocurrió un error al actualizar el personaje');
-        },
-      });
+        this.characterService.updatePersonaje(this.personaje.id, datosActualizados).subscribe({
+            next: (response) => {
+                if (response && response.status === 'success') {
+                    alert('Personaje actualizado correctamente');
+                    this.router.navigate(['/personajes']); // Redirige a la lista de personajes
+                } else {
+                    alert('Ocurrió un error al actualizar el personaje: ' + (response?.message || 'Respuesta inválida'));
+                }
+            },
+            error: (err) => {
+                console.error('Error al actualizar personaje:', err);
+                alert('Ocurrió un error al actualizar el personaje: ' + (err?.error?.message || 'Error desconocido'));
+            },
+        });
     } else {
-      alert('Por favor, completa todos los campos obligatorios o revisa el ID del personaje.');
+        alert('Por favor, completa todos los campos obligatorios o revisa el ID del personaje.');
     }
-  }
+}
 }

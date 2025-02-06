@@ -84,15 +84,22 @@ updatePersonaje(id: number, data: Partial<Personaje>): Observable<any> {
   const url = `${this.baseUrl}personajes&id=${id}`;
   return this.http.put(url, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).pipe(
       map((response: any) => {
-          if (response && response.message === "Personaje actualizado correctamente") {
+          if (response && response.status === 'success') {
               return response; // Devuelve la respuesta exitosa
           } else {
-              throw new Error('No se pudo actualizar el personaje');
+              throw new Error(response.message || 'No se pudo actualizar el personaje');
           }
       }),
       catchError((error) => {
           console.error('Error al actualizar el personaje:', error);
-          return throwError(() => new Error('Error al actualizar el personaje'));
+          let errorMessage = 'Error desconocido';
+          try {
+              const body = error.error || {};
+              errorMessage = body.message || body.error || 'Respuesta del servidor no válida';
+          } catch (e) {
+              errorMessage = 'Respuesta del servidor no válida';
+          }
+          return throwError(() => new Error(errorMessage));
       })
   );
 }
