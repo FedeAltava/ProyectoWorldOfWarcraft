@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Personaje } from '../../../interface/personaje';
+import { CharacterService } from '../../../services/character-service.service';
 
 @Component({
   selector: 'app-agregar-personaje',
@@ -27,7 +29,8 @@ export class AgregarPersonajeComponent implements OnInit {
   ];
   subclasesDisponibles: string[] = [];
 
-  constructor(private formBuilder: FormBuilder) {}
+
+  constructor(private formBuilder: FormBuilder ,private characterService: CharacterService) {}
 
   ngOnInit(): void {
     const usuarioIdLogueado = 1; // Ejemplo: Obtén el ID del usuario logueado
@@ -53,7 +56,29 @@ export class AgregarPersonajeComponent implements OnInit {
 
   agregarPersonaje() {
     if (this.form.valid) {
-      console.log(this.form.value); // Datos del formulario
+      // Extrae los datos del formulario
+      const nuevoPersonaje: Personaje = {
+        usuario_id: this.form.value.usuario_id,
+        tipo_id: this.form.value.tipo_id,
+        clase: this.form.value.clase,
+        subclase: this.form.value.subclase,
+        descripcion: this.form.value.descripcion,
+        nombre:this.form.value.nombre,
+      };
+  
+      // Llama al servicio para crear el personaje
+      this.characterService.createPersonaje(nuevoPersonaje).subscribe({
+        next: (response) => {
+          console.log('Personaje creado exitosamente:', response);
+          alert('Personaje creado correctamente');
+          // Reinicia el formulario después de crear el personaje
+          this.form.reset();
+        },
+        error: (error) => {
+          console.error('Error al crear el personaje:', error);
+          alert('Ocurrió un error al crear el personaje. Por favor, inténtalo de nuevo.');
+        },
+      });
     } else {
       alert('Por favor, completa todos los campos requeridos.');
     }

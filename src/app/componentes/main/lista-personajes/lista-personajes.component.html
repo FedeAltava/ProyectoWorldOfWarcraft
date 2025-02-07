@@ -2,7 +2,7 @@
   <h2>Lista de Personajes</h2>
   <ul>
     <li *ngFor="let personaje of personajes; let i = index">
-      <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }} (Nivel {{ personaje.nivel }})
+      <strong>{{ personaje.nombre }}</strong> - {{ personaje.clase }}
       <button [routerLink]="['/personajes', personaje.id]" id="detail-button">Detalles</button>
       <button (click)="viewEditPersonaje(personaje.id)">Editar</button>
       <button id="eliminar" (click)="deletePersonaje(personaje.id ?? -1)" style="background-color: red; color: white;">Eliminar</button>

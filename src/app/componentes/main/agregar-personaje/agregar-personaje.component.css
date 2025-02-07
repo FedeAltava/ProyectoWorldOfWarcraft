@@ -4,8 +4,9 @@
   background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
   padding: 20px; /* Espaciado interno */
   border-radius: 8px; /* Bordes redondeados */
-  max-width: 400px; /* Ancho máximo */
-  margin: 2% auto; /* Centrado horizontal */
+  max-width: 600px; /* Ancho máximo ajustado */
+  width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+  margin: 5% auto; /* Centrado horizontal y vertical */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
 }
 
@@ -20,7 +21,7 @@ h2 {
     0 0 10px rgba(0, 191, 255, 0.7), /* Brillo azul */
     0 0 20px rgba(0, 191, 255, 0.5); /* Efecto luminoso */
   padding: 10px; /* Espaciado interno */
-  margin: 20px 0; /* Margen superior e inferior */
+  margin: 0 0 20px; /* Margen inferior */
 }
 
 /* Estilo general del formulario */
@@ -33,19 +34,23 @@ form {
 /* Contenedor de cada campo del formulario */
 form div {
   display: flex; /* Diseño flexible */
-  flex-direction: column; /* Etiquetas y campos en columna */
+  align-items: center; /* Alinea verticalmente */
+  gap: 10px; /* Espacio entre label e input */
 }
 
 /* Estilo de las etiquetas */
 label {
-  margin-bottom: 5px; /* Espaciado inferior */
+  flex: 1; /* Ocupa una parte del espacio */
+  min-width: 100px; /* Ancho mínimo para las etiquetas */
   font-weight: bold; /* Negrita */
   color: #333; /* Color oscuro */
   font-family: 'Arial', sans-serif; /* Fuente estándar */
+  text-align: right; /* Alinea el texto a la derecha */
 }
 
 /* Estilo de los inputs y selects */
-input, select {
+input, select, textarea {
+  flex: 2; /* Ocupa dos partes del espacio */
   padding: 10px; /* Espaciado interno */
   font-size: 16px; /* Tamaño de fuente */
   border-radius: 4px; /* Bordes redondeados */
@@ -55,9 +60,15 @@ input, select {
 }
 
 /* Hover en inputs y selects */
-input:hover, select:hover {
+input:hover, select:hover, textarea:hover {
   border-color: #ffd700; /* Borde dorado al pasar el mouse */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Estilo para textarea */
+textarea {
+  resize: none; /* Desactiva el redimensionamiento */
+  height: 100px; /* Altura fija */
 }
 
 /* Estilo del botón */
@@ -72,6 +83,7 @@ button {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra profunda */
   cursor: pointer; /* Cursor de clic */
   transition: transform 0.2s, box-shadow 0.2s, background 0.3s; /* Transiciones */
+  margin-top: 10px; /* Espacio superior */
 }
 
 /* Hover del botón */
@@ -87,34 +99,4 @@ button:hover {
 button:active {
   transform: scale(0.98); /* Reducción de tamaño */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Sombra más pequeña */
-}
-
-/* Estilo para textarea */
-textarea {
-  resize: none; /* Desactiva el redimensionamiento */
-  height: 100px; /* Altura fija */
-  padding: 10px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño de fuente */
-  border-radius: 4px; /* Bordes redondeados */
-  border: 1px solid #ccc; /* Borde claro */
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave */
-}
-
-/* Hover en textarea */
-textarea:hover {
-  border-color: #ffd700; /* Borde dorado al pasar el mouse */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
-}
-
-/* Estilo para options en select */
-select option {
-  background-color: #fff; /* Fondo blanco */
-  color: #333; /* Texto oscuro */
-}
-
-/* Estilo para placeholder en inputs */
-::placeholder {
-  color: #aaa; /* Color gris claro */
-  opacity: 1; /* Opacidad completa */
 }
