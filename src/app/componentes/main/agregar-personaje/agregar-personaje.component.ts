@@ -37,7 +37,6 @@ export class AgregarPersonajeComponent implements OnInit {
     this.form = this.formBuilder.group({
       usuario_id: [usuarioIdLogueado, [Validators.required]], // ID del usuario
       nombre: ['', [Validators.required]],
-      nivel: ['', [Validators.required, Validators.min(1)]],
       tipo_id: ['', [Validators.required]], // ID del tipo de personaje
       clase: ['', [Validators.required]],
       subclase: ['', []], // Subclase no es obligatoria
