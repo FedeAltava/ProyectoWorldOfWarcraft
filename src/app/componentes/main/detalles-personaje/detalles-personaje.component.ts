@@ -30,11 +30,11 @@ export class DetallesPersonajeComponent implements OnInit {
     this.characterService.getPersonajeById(id).subscribe({
       next: (data) => {
         this.personaje = data;
-        this.isLoading = false; // Finaliza la carga
+        this.isLoading = false; 
       },
       error: (err) => {
         console.error('Error al obtener el personaje:', err);
-        this.isLoading = false; // Finaliza la carga en caso de error
+        this.isLoading = false; 
       }
     });
   }

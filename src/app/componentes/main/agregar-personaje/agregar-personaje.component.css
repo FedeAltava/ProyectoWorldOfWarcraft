@@ -1,112 +1,111 @@
-/* Estilo global para centrar todo en la página */
+
 body {
   display: flex;
-  justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
-  min-height: 100vh; /* Asegura que el cuerpo tenga al menos el alto de la pantalla */
-  margin: 0; /* Elimina los márgenes predeterminados */
-  background-color: #f0f0f0; /* Fondo de la página */
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  margin: 0; 
+  background-color: #f0f0f0; 
 }
 
-/* Contenedor principal del formulario */
+
 .agregar-personaje {
-  backdrop-filter: blur(15px); /* Filtro de desenfoque */
-  background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
-  padding: 20px; /* Espaciado interno */
-  border-radius: 8px; /* Bordes redondeados */
-  max-width: 600px; /* Ancho máximo ajustado */
-  width: 90%; /* Ajusta el ancho para pantallas pequeñas */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  backdrop-filter: blur(15px); 
+  background: rgba(255, 255, 255, 0.2); 
+  padding: 20px; 
+  border-radius: 8px;  
+  max-width: 600px; 
+  width: 90%;  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
 
-/* Título del formulario */
 h2 {
-  font-family: 'Georgia', serif; /* Fuente elegante */
-  font-size: 1.5em; /* Tamaño de fuente */
-  color: #ffd700; /* Color dorado */
-  text-align: center; /* Centrado */
+  font-family: 'Georgia', serif; 
+  font-size: 1.5em; 
+  color: #ffd700; 
+  text-align: center; 
   text-shadow: 
-    2px 2px 5px rgba(0, 0, 0, 0.7), /* Sombra oscura */
-    0 0 10px rgba(0, 191, 255, 0.7), /* Brillo azul */
-    0 0 20px rgba(0, 191, 255, 0.5); /* Efecto luminoso */
-  padding: 10px; /* Espaciado interno */
-  margin: 0 0 20px; /* Margen inferior */
+    2px 2px 5px rgba(0, 0, 0, 0.7), 
+    0 0 10px rgba(0, 191, 255, 0.7), 
+    0 0 20px rgba(0, 191, 255, 0.5); 
+  padding: 10px; 
+  margin: 0 0 20px; 
 }
 
-/* Estilo general del formulario */
+
 form {
-  display: flex; /* Diseño flexible */
-  flex-direction: column; /* Elementos en columna */
-  gap: 15px; /* Espacio entre elementos */
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
 }
 
-/* Contenedor de cada campo del formulario */
+
 form div {
-  display: flex; /* Diseño flexible */
-  align-items: center; /* Alinea verticalmente */
-  gap: 10px; /* Espacio entre label e input */
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
 }
 
-/* Estilo de las etiquetas */
+
 label {
-  flex: 1; /* Ocupa una parte del espacio */
-  min-width: 100px; /* Ancho mínimo para las etiquetas */
-  font-weight: bold; /* Negrita */
-  color: #333; /* Color oscuro */
-  font-family: 'Arial', sans-serif; /* Fuente estándar */
-  text-align: left; /* Alinea el texto a la derecha */
+  flex: 1; 
+  min-width: 100px; 
+  font-weight: bold; 
+  color: #333; 
+  font-family: 'Arial', sans-serif; 
+  text-align: left; 
 }
 
-/* Estilo de los inputs y selects */
+
 input, select, textarea {
-  flex: 2; /* Ocupa dos partes del espacio */
-  padding: 10px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño de fuente */
-  border-radius: 4px; /* Bordes redondeados */
-  border: 1px solid #ccc; /* Borde claro */
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave */
+  flex: 2;
+  padding: 10px; 
+  font-size: 16px; 
+  border-radius: 4px; 
+  border: 1px solid #ccc; 
+  background-color: rgba(255, 255, 255, 0.8); 
+  transition: border-color 0.3s, box-shadow 0.3s; 
   
 }
 
-/* Hover en inputs y selects */
+
 input:hover, select:hover, textarea:hover {
-  border-color: #ffd700; /* Borde dorado al pasar el mouse */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  border-color: #ffd700; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
-/* Estilo para textarea */
+
 textarea {
-  resize: none; /* Desactiva el redimensionamiento */
-  height: 100px; /* Altura fija */
+  resize: none; 
+  height: 100px; 
 }
 
 /* Estilo del botón */
 button {
-  font-family: 'Georgia', serif; /* Fuente elegante */
-  font-size: 16px; /* Tamaño de fuente */
-  color: #ffd700; /* Texto dorado */
-  padding: 10px; /* Espaciado interno */
-  border: 2px solid #8B4513; /* Borde marrón */
-  border-radius: 8px; /* Bordes redondeados */
-  background: linear-gradient(145deg, #8B0000, #FF4500); /* Degradado rojo-naranja */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra profunda */
-  cursor: pointer; /* Cursor de clic */
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s; /* Transiciones */
-  margin-top: 10px; /* Espacio superior */
+  font-family: 'Georgia', serif; 
+  font-size: 16px; 
+  color: #ffd700; 
+  padding: 10px; 
+  border: 2px solid #8B4513; 
+  border-radius: 8px; 
+  background: linear-gradient(145deg, #8B0000, #FF4500); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+  cursor: pointer; 
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s; 
+  margin-top: 10px; 
 }
 
-/* Hover del botón */
+
 button:hover {
-  color: #ffffff; /* Texto blanco al pasar el mouse */
-  border-color: #ffd700; /* Borde dorado */
-  transform: scale(1.05); /* Aumento de tamaño */
-  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); /* Sombra brillante */
-  background: linear-gradient(145deg, #FF4500, #8B0000); /* Degradado inverso */
+  color: #ffffff; 
+  border-color: #ffd700; 
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); 
+  background: linear-gradient(145deg, #FF4500, #8B0000); 
 }
 
-/* Botón activo (al hacer clic) */
+
 button:active {
-  transform: scale(0.98); /* Reducción de tamaño */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Sombra más pequeña */
+  transform: scale(0.98); 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); 
 }

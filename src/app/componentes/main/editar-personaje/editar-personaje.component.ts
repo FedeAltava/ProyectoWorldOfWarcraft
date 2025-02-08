@@ -40,7 +40,7 @@ export class EditarPersonajeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id')); // Obtiene el ID del personaje
+    const id = Number(this.route.snapshot.paramMap.get('id')); 
     if (!id) {
       console.error('ID del personaje no válido');
       return;

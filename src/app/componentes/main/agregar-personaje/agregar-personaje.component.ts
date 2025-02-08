@@ -33,13 +33,13 @@ export class AgregarPersonajeComponent implements OnInit {
   constructor(private formBuilder: FormBuilder ,private characterService: CharacterService) {}
 
   ngOnInit(): void {
-    const usuarioIdLogueado = 1; // Ejemplo: Obtén el ID del usuario logueado
+    const usuarioIdLogueado = 1; 
     this.form = this.formBuilder.group({
-      usuario_id: [usuarioIdLogueado, [Validators.required]], // ID del usuario
+      usuario_id: [usuarioIdLogueado, [Validators.required]], 
       nombre: ['', [Validators.required]],
-      tipo_id: ['', [Validators.required]], // ID del tipo de personaje
+      tipo_id: ['', [Validators.required]], 
       clase: ['', [Validators.required]],
-      subclase: ['', []], // Subclase no es obligatoria
+      subclase: ['', []], 
       descripcion: ['', [Validators.required]]
     });
   }
@@ -49,7 +49,7 @@ export class AgregarPersonajeComponent implements OnInit {
     if (target && target.value) {
       const claseSeleccionada = this.clases.find(clase => clase.nombre === target.value);
       this.subclasesDisponibles = claseSeleccionada?.subclases || [];
-      this.form.get('subclase')?.setValue(''); // Limpiar selección de subclase
+      this.form.get('subclase')?.setValue(''); 
     }
   }
 
