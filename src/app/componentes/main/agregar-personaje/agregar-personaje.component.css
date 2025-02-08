@@ -1,3 +1,13 @@
+/* Estilo global para centrar todo en la página */
+body {
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  min-height: 100vh; /* Asegura que el cuerpo tenga al menos el alto de la pantalla */
+  margin: 0; /* Elimina los márgenes predeterminados */
+  background-color: #f0f0f0; /* Fondo de la página */
+}
+
 /* Contenedor principal del formulario */
 .agregar-personaje {
   backdrop-filter: blur(15px); /* Filtro de desenfoque */
@@ -6,7 +16,6 @@
   border-radius: 8px; /* Bordes redondeados */
   max-width: 600px; /* Ancho máximo ajustado */
   width: 90%; /* Ajusta el ancho para pantallas pequeñas */
-  margin: 5% auto; /* Centrado horizontal y vertical */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
 }
 
@@ -45,7 +54,7 @@ label {
   font-weight: bold; /* Negrita */
   color: #333; /* Color oscuro */
   font-family: 'Arial', sans-serif; /* Fuente estándar */
-  text-align: right; /* Alinea el texto a la derecha */
+  text-align: left; /* Alinea el texto a la derecha */
 }
 
 /* Estilo de los inputs y selects */
@@ -57,6 +66,7 @@ input, select, textarea {
   border: 1px solid #ccc; /* Borde claro */
   background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
   transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave */
+  
 }
 
 /* Hover en inputs y selects */

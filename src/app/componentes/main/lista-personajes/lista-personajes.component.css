@@ -67,25 +67,26 @@
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
   }
+
   #detail-button:hover{
     color: #ffffff; 
     border-color: #ffd700; 
     transform: scale(1.05); 
     box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
   }
-  #elimin{
+  #eliminar{
     font-family: 'Georgia', serif; 
     font-size: 16px;
     color: #ffd700; 
     padding: 2px 2px;
     border: 2px solid #8B4513; 
     border-radius: 8px;
-    background: linear-gradient(145deg, #8B0000, #FF4500); 
+    background: linear-gradient(145deg, #c40b0b, #eb2929); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
   }
-  #elimin:hover{
+  #eliminar:hover{
     color: #ffffff; 
     border-color: #ffd700; 
     transform: scale(1.05); 
@@ -94,11 +95,11 @@
   #editar{
     font-family: 'Georgia', serif; 
     font-size: 16px;
-    color: #ffd700; 
+    color: #ebe8d8; 
     padding: 2px 2px;
     border: 2px solid #8B4513; 
     border-radius: 8px;
-    background: linear-gradient(145deg, #8B0000, #FF4500); 
+    background: linear-gradient(145deg, #7ff866, #089414); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
