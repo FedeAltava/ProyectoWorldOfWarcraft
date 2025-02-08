@@ -12,11 +12,7 @@
       </select>
       <small *ngIf="form.get('clase')?.invalid && form.get('clase')?.touched">Campo requerido</small>
     </div>
-    <div>
-      <label for="nivel">Nivel:</label>
-      <input type="number" id="nivel" formControlName="nivel" required />
-      <small *ngIf="form.get('nivel')?.invalid && form.get('nivel')?.touched">Debe ser un número mayor a 0</small>
-    </div>
+
     <div>
       <label for="descripcion">Descripción:</label>
       <textarea id="descripcion" formControlName="descripcion" required></textarea>
